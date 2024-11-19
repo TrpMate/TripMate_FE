@@ -1,13 +1,14 @@
 {
   "extends": [
-    "next/core-web-vitals", 
+    "next/core-web-vitals",
     "next/typescript",
     "standard",
-    "plugin:tailwindcss/recommended"
+    "plugin:tailwindcss/recommended",
+    "prettier"
   ],
   "rules": {
     "no-undef": "off",
-    "spaced-comment":"off",
+    "spaced-comment": "off",
     "tailwindcss/classnames-order": "off"
   }
 }
