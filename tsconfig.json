@@ -21,7 +21,17 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    // 추가된 옵션들
+    "forceConsistentCasingInFileNames": true, // 파일 이름의 대소문자 일관성 강제
+    "noUnusedLocals": true, // 사용하지 않는 지역 변수 체크
+    "noUnusedParameters": true, // 사용하지 않는 매개변수 체크
+    "noImplicitReturns": true, // 함수의 모든 코드 경로에서 return 값 확인
+    "noFallthroughCasesInSwitch": true, // switch 문에서 fallthrough 케이스 체크
+    "allowUnreachableCode": false, // 도달할 수 없는 코드 허용하지 않음
+    "allowUnusedLabels": false, // 사용되지 않는 레이블 허용하지 않음
+    "noImplicitOverride": true, // 상속된 메서드 재정의 시 'override' 키워드 필요
+    "verbatimModuleSyntax": true // import type을 명시적으로 사용하도록 강제
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

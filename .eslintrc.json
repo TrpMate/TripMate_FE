@@ -1,14 +1,15 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "next/typescript",
-    "standard",
-    "plugin:tailwindcss/recommended",
-    "prettier"
-  ],
+  "extends": ["standard", "next/core-web-vitals", "plugin:tailwindcss/recommended", "prettier"],
+  "plugins": ["tailwindcss"],
+  "settings": {
+    "tailwindcss": {
+      "callees": ["cn", "clsx"]
+    }
+  },
   "rules": {
     "no-undef": "off",
     "spaced-comment": "off",
-    "tailwindcss/classnames-order": "off"
+    "no-unused-vars": "error",
+    "no-console": "warn"
   }
 }
