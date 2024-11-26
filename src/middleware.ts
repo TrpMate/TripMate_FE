@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 // 인증이 필요하지 않은 라우트
-const publicRoutes = ['/login']
+const publicRoutes = ['/login', '/signup'] // '/signup'추가
 
 export function middleware(request: NextRequest) {
   const token = request.cookies.get('token')
