@@ -56,7 +56,6 @@ export default function SignUpPage() {
                 <FormControl>
                   <Input {...field} placeholder="example@email.com" />
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />
@@ -68,7 +67,6 @@ export default function SignUpPage() {
                 <FormControl>
                   <Input type="password" {...field} />
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />
@@ -81,7 +79,6 @@ export default function SignUpPage() {
                 <FormControl>
                   <Input type="password" {...field} />
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />
@@ -94,7 +91,6 @@ export default function SignUpPage() {
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />
@@ -107,10 +103,15 @@ export default function SignUpPage() {
                 <FormControl>
                   <Input {...field} placeholder="010-1234-5678" />
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />
+
+          {Object.values(form.formState.errors).map((error, i) => (
+            <p key={i} className="text-xs text-red-600">
+              *{error.message}
+            </p>
+          ))}
 
           <Button
             type="submit"
