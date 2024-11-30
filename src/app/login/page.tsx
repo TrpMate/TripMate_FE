@@ -1,40 +1,82 @@
+'use client'
 import Link from 'next/link'
+import { useForm } from 'react-hook-form'
+import { useState } from 'react'
+import { Form, FormControl, FormItem, FormLabel } from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { Alert, AlertDescription } from '@/components/ui/alert'
+
+type LoginFormValues = {
+  email: string
+  password: string
+}
 
 export default function LoginPage() {
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  const form = useForm<LoginFormValues>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  })
+
+  const onSubmit = (data: LoginFormValues) => {
+    console.log('데이터:', data)
+    setErrorMessage(null)
+  }
+
+  const onError = (errors: any) => {
+    if (errors.email) {
+      setErrorMessage(errors.email.message)
+    } else if (errors.password) {
+      setErrorMessage(errors.password.message)
+    }
+  }
+
   return (
-    <div className="mx-auto max-w-md space-y-6 p-4">
-      <h1 className="mb-4 text-center text-2xl font-bold">로그인</h1>
-      <form className="space-y-4 p-4">
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium">
-            이메일
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            className="mt-1 block w-full rounded-md border p-2"
-          />
-        </div>
+    <>
+      <div className="mx-auto max-w-md space-y-6 p-4">
+        <h1 className="mb-4 text-center text-2xl font-bold">로그인</h1>
 
-        <div>
-          <label htmlFor="password" className="block text-sm font-medium">
-            비밀번호
-          </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            required
-            className="mt-1 block w-full rounded-md border p-2"
-          />
-        </div>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit, onError)} className="space-y-4">
+            <FormItem>
+              <FormLabel htmlFor="email">이메일</FormLabel>
+              <FormControl>
+                <Input
+                  id="email"
+                  {...form.register('email', { required: '이메일을 입력해주세요.' })}
+                  className="rouded-md mt-1 block w-full border p-2"
+                />
+              </FormControl>
+            </FormItem>
 
-        <button type="submit" className="w-full rounded-md bg-blue-500 py-2 text-white">
-          로그인
-        </button>
-      </form>
+            <FormItem>
+              <FormLabel htmlFor="password">비밀번호</FormLabel>
+              <FormControl>
+                <Input
+                  type="password"
+                  id="password"
+                  {...form.register('password', { required: '비밀번호를 입력해 주세요.' })}
+                  className="mt-1 block w-full rounded-md border p-2"
+                />
+              </FormControl>
+            </FormItem>
+
+            {errorMessage && (
+              <Alert className="text-red-650 text-red-650 m-0 mb-4 border-none p-0 font-bold text-red-500">
+                <AlertDescription>{errorMessage}</AlertDescription>
+              </Alert>
+            )}
+
+            <Button type="submit" className="w-full rounded-md bg-blue-500 py-2 text-white">
+              로그인
+            </Button>
+          </form>
+        </Form>
+      </div>
 
       <div className="text-center">
         <p className="text-sm">
@@ -44,6 +86,6 @@ export default function LoginPage() {
           </Link>
         </p>
       </div>
-    </div>
+    </>
   )
 }
