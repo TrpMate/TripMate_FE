@@ -22,9 +22,23 @@ export default function LoginPage() {
     },
   })
 
-  const onSubmit = (data: LoginFormValues) => {
-    console.log('데이터:', data)
-    setErrorMessage(null)
+  const onSubmit = async (data: LoginFormValues) => {
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.message || '로그인 실패')
+      }
+
+      alert('로그인 성공')
+    } catch (error: any) {
+      alert(error.message)
+    }
   }
 
   const onError = (errors: any) => {
@@ -48,7 +62,7 @@ export default function LoginPage() {
                 <Input
                   id="email"
                   {...form.register('email', { required: '이메일을 입력해주세요.' })}
-                  className="rouded-md mt-1 block w-full border p-2"
+                  className="mt-1 block w-full border p-2"
                 />
               </FormControl>
             </FormItem>
@@ -66,7 +80,7 @@ export default function LoginPage() {
             </FormItem>
 
             {errorMessage && (
-              <Alert className="text-red-650 text-red-650 m-0 mb-4 border-none p-0 font-bold text-red-500">
+              <Alert className="m-0 mb-4 border-none p-0 font-bold text-red-600">
                 <AlertDescription>{errorMessage}</AlertDescription>
               </Alert>
             )}

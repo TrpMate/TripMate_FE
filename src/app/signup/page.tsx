@@ -6,6 +6,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from '@/components/ui/input'
 import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
 
 const formSchema = z
   .object({
@@ -31,9 +32,26 @@ export default function SignUpPage() {
       contact: '',
     },
   })
+  const router = useRouter()
 
-  const onSubmit = (data: z.infer<typeof formSchema>) => {
-    console.log('데이터: ', data)
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    try {
+      const response = await fetch('/api/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.message || '회원가입 실패')
+      }
+
+      alert('회원가입이 완료되었습니다.')
+      router.push('/login')
+    } catch (error: any) {
+      alert(error.message)
+    }
   }
 
   return (

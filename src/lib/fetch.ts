@@ -1,5 +1,4 @@
 import { cookies } from 'next/headers'
-import { redirect } from 'next/navigation'
 
 type FetchOptions = {
   cache?: RequestCache
@@ -19,7 +18,7 @@ export class FetchError extends Error {
   }
 }
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'
 
 export async function fetchApi<T>(
   endpoint: string,
@@ -34,7 +33,7 @@ export async function fetchApi<T>(
 
   // 인증이 필요한데 토큰이 없는 경우
   if (authRequired && !token) {
-    redirect('/login')
+    throw new FetchError('Unauthorized: 토큰이 없습니다.', 401)
   }
 
   try {
@@ -54,11 +53,11 @@ export async function fetchApi<T>(
 
     // 401 에러 처리
     if (res.status === 401) {
-      // 토큰 만료 시 쿠키 삭제
+      // 토큰 만료 시 쿠키 삭제 및 에러반환
       const cookieStore = await cookies()
       cookieStore.delete('token')
       cookieStore.delete('refreshToken')
-      redirect('/login')
+      throw new FetchError('Unauthorized: 토큰이 만료되었습니다.', 401)
     }
 
     if (!res.ok) {
