@@ -30,8 +30,7 @@
     "noFallthroughCasesInSwitch": true, // switch 문에서 fallthrough 케이스 체크
     "allowUnreachableCode": false, // 도달할 수 없는 코드 허용하지 않음
     "allowUnusedLabels": false, // 사용되지 않는 레이블 허용하지 않음
-    "noImplicitOverride": true, // 상속된 메서드 재정의 시 'override' 키워드 필요
-    "verbatimModuleSyntax": true // import type을 명시적으로 사용하도록 강제
+    "noImplicitOverride": true // 상속된 메서드 재정의 시 'override' 키워드 필요
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
