@@ -10,6 +10,7 @@ export const createServerApi = async () => {
     headers: {
       'Content-Type': 'application/json',
     },
+    withCredentials: true,
   })
 
   try {

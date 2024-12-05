@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Form, FormControl, FormItem, FormLabel } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
@@ -11,21 +10,18 @@ import { Alert, AlertDescription } from '@/components/ui/alert'
 import { login, type LoginRequest } from '../_api'
 
 export default function LoginForm() {
-  const router = useRouter()
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const form = useForm<LoginRequest>({
     defaultValues: {
       email: '',
       password: '',
-      userName: '',
     },
   })
 
   const onSubmit = async (data: LoginRequest) => {
     try {
       await login(data)
-      router.push('/dashboard')
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : '로그인에 실패했습니다.')
     }
@@ -36,25 +32,12 @@ export default function LoginForm() {
       setErrorMessage(errors.email.message)
     } else if (errors.password) {
       setErrorMessage(errors.password.message)
-    } else if (errors.userName) {
-      setErrorMessage(errors.userName.message)
     }
   }
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit, onError)} className="space-y-6">
-        <FormItem>
-          <FormLabel htmlFor="userName">사용자 이름</FormLabel>
-          <FormControl>
-            <Input
-              id="userName"
-              {...form.register('userName', { required: '사용자 이름을 입력해주세요.' })}
-              className="mt-1"
-            />
-          </FormControl>
-        </FormItem>
-
         <FormItem>
           <FormLabel htmlFor="email">이메일</FormLabel>
           <FormControl>

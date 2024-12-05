@@ -9,6 +9,7 @@ export const createClientApi = () => {
     headers: {
       'Content-Type': 'application/json',
     },
+    withCredentials: true,
   })
 
   api.interceptors.request.use(
@@ -24,14 +25,14 @@ export const createClientApi = () => {
   api.interceptors.response.use(
     (response) => response,
     async (error) => {
-      if (error.response?.status === 401) {
-        try {
-          await axios.post('/api/auth/refresh')
-          return api.request(error.config)
-        } catch {
-          window.location.href = '/login'
-        }
-      }
+      // if (error.response?.status === 401) {
+      //   try {
+      //     await axios.post('/api/auth/refresh')
+      //     return api.request(error.config)
+      //   } catch {
+      //     window.location.href = '/login'
+      //   }
+      // }
       return Promise.reject(error)
     }
   )
