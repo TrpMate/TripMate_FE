@@ -7,19 +7,19 @@ import { Form, FormControl, FormItem, FormLabel } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Alert, AlertDescription } from '@/components/ui/alert'
-import { login, type LoginRequest } from '../_api'
+import { login, LoginPayload  } from '../_api'
 
 export default function LoginForm() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
-  const form = useForm<LoginRequest>({
+  const form = useForm<LoginPayload>({
     defaultValues: {
       email: '',
       password: '',
     },
   })
 
-  const onSubmit = async (data: LoginRequest) => {
+  const onSubmit = async (data: LoginPayload) => {
     try {
       await login(data)
     } catch (error) {

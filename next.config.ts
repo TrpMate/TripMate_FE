@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: '/api/:path*',
+        source: '/_api/:path*',
         destination: 'http://tripmate-be.shop/:path*',
       },
     ]

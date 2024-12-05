@@ -27,8 +27,8 @@ export const createClientApi = () => {
     async (error) => {
       // if (error.response?.status === 401) {
       //   try {
-      //     await axios.post('/api/auth/refresh')
-      //     return api.request(error.config)
+      //     await axios.post('/_api/auth/refresh')
+      //     return _api.request(error.config)
       //   } catch {
       //     window.location.href = '/login'
       //   }

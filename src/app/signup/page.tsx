@@ -7,14 +7,15 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from '@/components/ui/input'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
+import { signup } from '@/app/signup/_api'
 
 const formSchema = z
   .object({
     email: z.string().email({ message: '유효한 이메일을 입력해 주세요.' }),
     password: z.string().min(8, { message: '비밀번호는 최소 8자 이상 입력해 주세요.' }),
     passwordConfirm: z.string().min(8, { message: '비밀번호를 다시 입력해 주세요.' }),
-    name: z.string().min(2, { message: '이름은 최소 2자 이상 입력해 주세요.' }),
-    contact: z.string().regex(/^010-\d{4}-\d{4}$/, { message: '연락처 입력 형식: 010-1234-5678' }),
+    username: z.string().min(2, { message: '이름은 최소 2자 이상 입력해 주세요.' }),
+    nickname: z.string().min(2, { message: '닉네임은 최소 2자 이상 입력해 주세요.' }),
   })
   .refine((data) => data.password === data.passwordConfirm, {
     message: '비밀번호가 일치하지 않습니다.',
@@ -28,20 +29,15 @@ export default function SignUpPage() {
       email: '',
       password: '',
       passwordConfirm: '',
-      name: '',
-      contact: '',
+      username: '',
+      nickname: '',
     },
   })
   const router = useRouter()
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      const response = await fetch('/api/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      })
-
+      const response = await signup(data)
       if (!response.ok) {
         const errorData = await response.json()
         throw new Error(errorData.message || '회원가입 실패')
@@ -71,6 +67,29 @@ export default function SignUpPage() {
             )}
           />
           <FormField
+            name="username"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>이름</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            name="nickname"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>닉네임</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+
+          <FormField
             name="password"
             render={({ field }) => (
               <FormItem>
@@ -94,40 +113,13 @@ export default function SignUpPage() {
             )}
           />
 
-          <FormField
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>이름</FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            name="contact"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>연락처</FormLabel>
-                <FormControl>
-                  <Input {...field} placeholder="010-1234-5678" />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-
           {Object.values(form.formState.errors).map((error, i) => (
             <p key={i} className="text-xs text-red-600">
               *{error.message}
             </p>
           ))}
 
-          <Button
-            type="submit"
-            className="w-full rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
-          >
+          <Button type="submit" className="w-full">
             가입하기
           </Button>
         </form>
