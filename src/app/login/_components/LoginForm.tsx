@@ -1,78 +1,72 @@
 'use client'
 
-import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Link from 'next/link'
-import { Form, FormControl, FormItem, FormLabel } from '@/components/ui/form'
+import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { Alert, AlertDescription } from '@/components/ui/alert'
-import { login, LoginPayload  } from '../_api'
+import { login } from '../_api'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+
+const formSchema = z.object({
+  email: z.string().email({ message: '유효한 이메일을 입력해 주세요.' }),
+  password: z.string().min(8, { message: '비밀번호는 최소 8자 이상 입력해 주세요.' }),
+})
 
 export default function LoginForm() {
-  const [errorMessage, setErrorMessage] = useState<string | null>(null)
-
-  const form = useForm<LoginPayload>({
+  const form = useForm({
+    resolver: zodResolver(formSchema),
     defaultValues: {
       email: '',
       password: '',
     },
   })
 
-  const onSubmit = async (data: LoginPayload) => {
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      await login(data)
-    } catch (error) {
-      setErrorMessage(error instanceof Error ? error.message : '로그인에 실패했습니다.')
-    }
-  }
-
-  const onError = (errors: any) => {
-    if (errors.email) {
-      setErrorMessage(errors.email.message)
-    } else if (errors.password) {
-      setErrorMessage(errors.password.message)
+      const response = await login(data)
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.message || '로그인 실패')
+      }
+    } catch (error: any) {
+      alert(error.message)
     }
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit, onError)} className="space-y-6">
-        <FormItem>
-          <FormLabel htmlFor="email">이메일</FormLabel>
-          <FormControl>
-            <Input
-              id="email"
-              type="email"
-              {...form.register('email', {
-                required: '이메일을 입력해주세요.',
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: '올바른 이메일 주소를 입력해주세요.',
-                },
-              })}
-              className="mt-1"
-            />
-          </FormControl>
-        </FormItem>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <FormField
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>이메일</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+            </FormItem>
+          )}
+        />
 
-        <FormItem>
-          <FormLabel htmlFor="password">비밀번호</FormLabel>
-          <FormControl>
-            <Input
-              id="password"
-              type="password"
-              {...form.register('password', { required: '비밀번호를 입력해주세요.' })}
-              className="mt-1"
-            />
-          </FormControl>
-        </FormItem>
+        <FormField
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel htmlFor="password">비밀번호</FormLabel>
+              <FormControl>
+                <Input type="password" {...field} />
+              </FormControl>
+            </FormItem>
+          )}
+        />
 
-        {errorMessage && (
-          <Alert variant="destructive">
-            <AlertDescription>{errorMessage}</AlertDescription>
-          </Alert>
-        )}
+        {Object.values(form.formState.errors).map((error, i) => (
+          <p key={i} className="text-xs text-red-600">
+            *{error.message}
+          </p>
+        ))}
 
         <Button type="submit" className="w-full">
           로그인
