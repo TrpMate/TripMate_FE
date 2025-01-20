@@ -1,7 +1,6 @@
 import Position from '@/components/ui/svg/Position'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 
 type MenuItemProps = {
   item: {
@@ -32,13 +31,20 @@ const MenuItem = ({ item }: MenuItemProps) => {
   return (
     <Link href={item.contentid.toString()}>
       <div className="relative h-[500px] w-[330px] overflow-hidden rounded-[20px]">
-        <Image src={item.firstimage} className="object-cover" fill sizes="1" alt="메뉴 이미지" />
+        <Image
+          src={item.firstimage ? item.firstimage : '/images/no_image.jpg'}
+          className="object-cover"
+          fill
+          sizes="1"
+          alt="메뉴 이미지"
+          property="image"
+        />
       </div>
-      <div className="mt-[20px]">
+      <div className="mt-[20px] w-full max-w-[330px]">
         <p className="text-[22px] font-extrabold">{item.title}</p>
         <div className="flex items-center">
           <Position />
-          <p className="ml-[4px] text-[16px] font-medium">{`${item.addr1} ${item.addr2}`}</p>
+          <p className="ml-[4px] truncate text-[16px] font-medium">{`${item.addr1} ${item.addr2}`}</p>
         </div>
       </div>
     </Link>
