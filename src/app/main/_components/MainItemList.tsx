@@ -1,9 +1,10 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { getData } from '../_api'
+import MainSearch from './MainSearch/MainSearch'
 import MenuItem from './MenuItem'
 import Skeleton from './Skeleton'
-import { getData } from '../_api'
 
 type MainItemListProps = {
   addr1: string
@@ -31,37 +32,54 @@ type MainItemListProps = {
 const MainItemList = () => {
   const [tourList, setTourList] = useState<MainItemListProps[]>([])
   const [isLoading, setIsLoading] = useState(false)
-
-  const getListData = async () => {
+  const [listType, setListType] = useState(12)
+  const [searchText, setSearchText] = useState('')
+  const getTourList = async () => {
     try {
       setIsLoading(true)
-      const data = await getData({ numOfRows: 4, pageNo: 1, keyword: '서울', arrange: 'A' })
-      if (data.status === 200) {
-        setTourList(data.data.response.body.items.item)
-        setIsLoading(false)
-      }
-    } catch (error) {}
+      const data = await getData({
+        keyword: searchText,
+        arrange: 'A',
+        numOfRows: 4,
+        pageNo: 1,
+        contentTypeId: listType,
+      })
+      setIsLoading(false)
+      setTourList(data.response.body.items.item ?? [])
+      console.log(data.response.body.items.item)
+    } catch (error) {
+      console.log(error)
+      setIsLoading(false)
+    }
   }
 
   useEffect(() => {
-    getListData()
+    getTourList()
   }, [])
 
-  if (isLoading)
-    return (
-      <div className="mt-[111px] flex w-full flex-wrap justify-center gap-[40px]">
-        {Array.from({ length: 4 }).map((_, index) => (
-          <Skeleton key={index} />
-        ))}
-        ;
-      </div>
-    )
-
   return (
-    <div className="mt-[111px] flex w-full flex-wrap justify-center gap-[40px]">
-      {tourList.map((item) => (
-        <MenuItem key={item.contentid} item={item} />
-      ))}
+    <div className="flex flex-col items-center justify-center">
+      <div className="mt-[90px] flex justify-center bg-white">
+        <MainSearch
+          searchText={searchText}
+          setSearchText={setSearchText}
+          setListType={setListType}
+          onClick={getTourList}
+        />
+      </div>
+      {isLoading ? (
+        <div className="mt-[111px] flex flex-wrap justify-center gap-[40px]">
+          <Skeleton />
+        </div>
+      ) : (
+        <div className="w-full">
+          <div className="mt-[111px] flex flex-wrap justify-center gap-[40px]">
+            {tourList.map((item) => (
+              <MenuItem key={item.contentid} item={item} />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
