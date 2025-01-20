@@ -9,6 +9,15 @@ const nextConfig: NextConfig = {
       },
     ]
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'tong.visitkorea.or.kr',
+        pathname: '/**',
+      },
+    ],
+  },
 }
 
 export default nextConfig
