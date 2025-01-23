@@ -68,8 +68,12 @@ const MainItemList = () => {
         />
       </div>
       {isLoading ? (
-        <div className="mt-[111px] flex flex-wrap justify-center gap-[40px]">
-          <Skeleton />
+        <div className="w-full">
+          <div className="mt-[111px] flex w-full flex-wrap justify-center gap-[40px]">
+            {Array.from({ length: 4 }).map((_, index) => (
+              <Skeleton key={index} skeletonType="main" />
+            ))}
+          </div>
         </div>
       ) : (
         <div className="w-full">

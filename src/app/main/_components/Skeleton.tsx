@@ -1,16 +1,19 @@
-import Position from '@/components/ui/svg/Position'
-import React from 'react'
+type SkeletonType = {
+  skeletonType: 'main' | 'place'
+}
 
-const Skeleton = () => {
+const Skeleton = ({ skeletonType }: SkeletonType) => {
+  const renderSkeleton = {
+    main: 'w-[330px] h-[570px] rounded-[20px]',
+    place: 'w-[330px] h-[360px] rounded-[30px] mt-10',
+  }
+
   return (
-    <div>
-      <div className="relative h-[500px] w-[330px] overflow-hidden rounded-[20px] bg-gray-200"></div>
+    <div className={`${skeletonType === 'place' ? 'mb-10' : 'mb-0'}`}>
+      <div className={`${renderSkeleton[skeletonType]} relative overflow-hidden bg-gray-200`} />
       <div className="mt-[20px]">
         <p className="h-[40px] w-[200px] bg-gray-200 text-[22px] font-extrabold"></p>
-        <div className="mt-2 flex items-center">
-          <Position />
-          <p className="ml-[4px] h-[20px] w-[300px] bg-gray-200 text-[16px] font-medium"></p>
-        </div>
+        <p className="ml-[4px] mt-2 h-[20px] w-[300px] bg-gray-200 text-[16px] font-medium"></p>
       </div>
     </div>
   )
