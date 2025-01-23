@@ -1,16 +1,15 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link'
 
 const MoreButton = () => {
   return (
-    <div className="mt-[60px] mb-[107px] flex justify-center ">
-      <Link href={"/list"}>
-        <div className="rounded-[30px] border self-start px-[36px] py-[18px]">
+    <div className="mb-[107px] mt-[60px] flex justify-center">
+      <Link href={'/place'}>
+        <div className="self-start rounded-[30px] border px-[36px] py-[18px]">
           <p className="text-[20px] font-medium">여행지 더보기 +</p>
         </div>
       </Link>
     </div>
-  );
-};
+  )
+}
 
-export default MoreButton;
+export default MoreButton
