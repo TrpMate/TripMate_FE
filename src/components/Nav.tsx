@@ -4,7 +4,7 @@ const Nav = () => {
   const menuList = [
     { name: 'HOME', link: '/main' },
     { name: 'PLACE', link: '/place' },
-    { name: 'PLAN', link: '/' },
+    { name: 'PLAN', link: '/plan' },
     { name: 'HELP', link: '/' },
   ]
   return (
