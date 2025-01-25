@@ -33,11 +33,10 @@ const MenuItem = ({ item }: MenuItemProps) => {
       <div className="relative h-[500px] w-[330px] overflow-hidden rounded-[20px]">
         <Image
           src={item.firstimage ? item.firstimage : '/images/no_image.jpg'}
-          className="object-cover"
+          style={{ objectFit: 'cover' }}
           fill
           sizes="1"
           alt="메뉴 이미지"
-          property="image"
         />
       </div>
       <div className="mt-[20px] w-full max-w-[330px]">

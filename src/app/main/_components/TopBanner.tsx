@@ -1,11 +1,10 @@
-import React from 'react'
-import TripCreateButton from './TripCreateButton'
 import Image from 'next/image'
+import TripCreateButton from './TripCreateButton'
 
 const TopBanner = () => {
   return (
     <div className="relative h-[600px] w-full">
-      <Image src="/images/image.png" fill sizes="1" alt="메인탑이미지" priority />
+      <Image src="/images/image.png" fill sizes="1" alt="메인탑이미지" />
       <div className="absolute h-full w-full pt-[255px] text-white">
         <div className="flex w-full justify-center">
           <TripCreateButton
