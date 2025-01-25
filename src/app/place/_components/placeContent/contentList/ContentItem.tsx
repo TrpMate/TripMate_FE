@@ -1,16 +1,18 @@
 import PlaceRightArrow from '@/components/ui/svg/PlaceRightArrow'
 import Image from 'next/image'
+import Link from 'next/link'
 import ItemIcon from './ItemIcon'
 
 type ContentItemProps = {
+  href: string
   src: string
   title: string
   content: string
 }
 
-const ContentItem = ({ src, title, content }: ContentItemProps) => {
+const ContentItem = ({ href, src, title, content }: ContentItemProps) => {
   return (
-    <div className="relative w-[330px] overflow-hidden rounded-[30px] border">
+    <Link href={href} className="relative w-[330px] overflow-hidden rounded-[30px] border">
       <ItemIcon number={100} />
       <div className="relative h-[360px] w-full">
         <Image
@@ -29,7 +31,7 @@ const ContentItem = ({ src, title, content }: ContentItemProps) => {
         </div>
         <PlaceRightArrow />
       </div>
-    </div>
+    </Link>
   )
 }
 
