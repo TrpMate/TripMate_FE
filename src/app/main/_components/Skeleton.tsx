@@ -4,7 +4,7 @@ type SkeletonType = {
 
 const Skeleton = ({ skeletonType }: SkeletonType) => {
   const renderSkeleton = {
-    main: 'w-[330px] h-[570px] rounded-[20px]',
+    main: 'w-[330px] h-[500px] rounded-[20px]',
     place: 'w-[330px] h-[360px] rounded-[30px] mt-10',
   }
 
