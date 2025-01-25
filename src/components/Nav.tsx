@@ -9,7 +9,7 @@ const Nav = () => {
   ]
   return (
     <nav className="absolute z-10 flex h-[100px] w-full max-w-[1920px] items-center justify-between bg-[#F5F5F5] bg-opacity-60 px-[50px]">
-      <Link href={'/'}>
+      <Link href={'/main'}>
         <p className="text-[40px] font-medium leading-[50px] text-[#111111]">TripMate</p>
       </Link>
       <ul className="flex gap-[70px] text-[22px] font-medium leading-[22px] text-[#353535]">

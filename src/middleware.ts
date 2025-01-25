@@ -2,14 +2,18 @@ import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
 // 인증이 필요하지 않은 라우트
-const publicRoutes = ['/login', '/signup', '/main', '/place', '/images/*'] // '/signup'추가
+const publicRoutes = ['/login', '/signup', '/main', '/place', '/place/*', '/images/*'] // '/signup'추가
 
 export function middleware(request: NextRequest) {
   const token = request.cookies.get('token')
   const { pathname } = request.nextUrl
 
   // 공개 라우트인 경우 통과
-  if (publicRoutes.includes(pathname)) {
+  if (
+    publicRoutes.some((route) =>
+      route.endsWith('*') ? pathname.startsWith(route.replace('*', '')) : pathname === route
+    )
+  ) {
     // 이미 로그인된 경우 대시보드로 리다이렉트
     if (token) {
       return NextResponse.redirect(new URL('/dashboard', request.url))
