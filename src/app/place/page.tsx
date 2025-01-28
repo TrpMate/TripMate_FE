@@ -1,5 +1,6 @@
 'use client'
 
+import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { getData } from '../main/_api'
 import Skeleton from '../main/_components/Skeleton'
@@ -8,10 +9,11 @@ import ContentList from './_components/placeContent/contentList/ContentList'
 import DropList from './_components/placeContent/dropList/DropList'
 
 const PlacePage = () => {
+  const params = useSearchParams()
   const [tourList, setTourList] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-  const [listType, setListType] = useState(12)
-  const [keyword, setKeyword] = useState('')
+  const [listType, setListType] = useState(Number(params.get('ct')) ?? 12)
+  const [keyword, setKeyword] = useState(params.get('kd')?.toString() ?? '')
   const [rankingName, setRankingName] = useState({
     name: '제목순',
     value: 'A',

@@ -1,6 +1,5 @@
 import MainBackground from './_components/MainBackground'
 import MainItemList from './_components/MainItemList'
-import MoreButton from './_components/MoreButton'
 import TopBanner from './_components/TopBanner'
 
 const MainPage = () => {
@@ -9,7 +8,6 @@ const MainPage = () => {
       <MainBackground />
       <TopBanner />
       <MainItemList />
-      <MoreButton />
     </div>
   )
 }
