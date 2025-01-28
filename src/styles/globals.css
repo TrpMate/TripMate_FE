@@ -12,12 +12,13 @@
     color: var(--foreground);
   }
   .skeleton {
-    @apply bg-skeleton-shimmer bg-shimmer animate-shimmer;
+    @apply animate-shimmer bg-skeleton-shimmer bg-shimmer;
   }
 }
 
 body {
   font-family: 'SUIT Variable', Arial, Helvetica, sans-serif;
+  font-display: swap;
 }
 
 @layer base {
