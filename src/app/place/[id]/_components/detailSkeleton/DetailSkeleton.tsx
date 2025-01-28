@@ -1,29 +1,29 @@
 const DetailSkeleton = () => {
   return (
     <div className="pt-[100px]">
-      <div className="py-[100px] flex flex-col justify-center items-center">
-        <div className="w-[650px] h-[70px] bg-gray-200" />
-        <div className="mt-[10px] w-[200px] h-[25px] bg-gray-200" />
-        <div className="mt-10 rounded-[30px] w-[250px] h-[60px] bg-gray-200" />
+      <div className="flex flex-col items-center justify-center py-[100px]">
+        <div className="skeleton h-[70px] w-[650px]" />
+        <div className="skeleton mt-[10px] h-[25px] w-[200px]" />
+        <div className="skeleton mt-10 h-[60px] w-[250px] rounded-[30px]" />
       </div>
-      <div className="w-full h-[600px] relative bg-gray-200" />
-      <div className="pt-[100px] pb-[200px] px-[240px] ">
-        <div className="w-full h-[100px] bg-gray-200" />
-        <div className="mt-[100px] w-full h-[500px] bg-gray-200" />
-        <div className="pt-[100px] flex items-start gap-[191px]">
+      <div className="skeleton relative h-[600px] w-full" />
+      <div className="px-[240px] pb-[200px] pt-[100px]">
+        <div className="skeleton h-[100px] w-full" />
+        <div className="skeleton mt-[100px] h-[500px] w-full" />
+        <div className="flex items-start gap-[191px] pt-[100px]">
           <div className="flex flex-col gap-[20px]">
-            <div className="w-[200px] h-[33px] bg-gray-200" />
-            <div className="w-[200px] h-[33px] bg-gray-200" />
-            <div className="w-[200px] h-[33px] bg-gray-200" />
+            <div className="skeleton h-[33px] w-[200px]" />
+            <div className="skeleton h-[33px] w-[200px]" />
+            <div className="skeleton h-[33px] w-[200px]" />
           </div>
           <div className="flex flex-col gap-[20px]">
-            <div className="w-[200px] h-[33px] bg-gray-200" />
-            <div className="w-[200px] h-[33px] bg-gray-200" />
+            <div className="skeleton h-[33px] w-[200px]" />
+            <div className="skeleton h-[33px] w-[200px]" />
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default DetailSkeleton;
+export default DetailSkeleton

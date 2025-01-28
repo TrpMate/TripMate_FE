@@ -1,13 +1,14 @@
-import { useState } from "react";
-import DropDown from "./dropMenu/DropDown";
-import MenuList from "./dropMenu/MenuList";
+import { useOnclickOutside } from '@/hooks/useOnClickOutSide'
+import { useRef, useState } from 'react'
+import DropDown from './dropMenu/DropDown'
+import MenuList from './dropMenu/MenuList'
 
 type DropListProps = {
-  rankingName: { name: string; value: string };
-  setRankingName: (value: { name: string; value: string }) => void;
-  numOfRowName: { name: string; value: number };
-  setNumOfRowName: (value: { name: string; value: number }) => void;
-};
+  rankingName: { name: string; value: string }
+  setRankingName: (value: { name: string; value: string }) => void
+  numOfRowName: { name: string; value: number }
+  setNumOfRowName: (value: { name: string; value: number }) => void
+}
 
 const DropList = ({
   rankingName,
@@ -15,19 +16,26 @@ const DropList = ({
   numOfRowName,
   setNumOfRowName,
 }: DropListProps) => {
-  const [numOfRowOpen, setNumOfRowOpen] = useState(false);
-  const [rankingOpen, setRankingOpen] = useState(false);
+  const [numOfRowOpen, setNumOfRowOpen] = useState(false)
+  const [rankingOpen, setRankingOpen] = useState(false)
+  const dropRef = useRef(null)
+  const dropRef2 = useRef(null)
+
+  useOnclickOutside(dropRef, () => setRankingOpen(false))
+  useOnclickOutside(dropRef2, () => setNumOfRowOpen(false))
 
   return (
-    <div className="w-full flex gap-[10px] justify-end items-center z-10">
+    <div className="z-10 flex w-full items-center justify-end gap-[10px]">
       <div className="relative">
         <DropDown
+          dropOpen={rankingOpen}
           type="ranking"
           title={rankingName.name}
           onClick={() => setRankingOpen(!rankingOpen)}
         />
         {rankingOpen && (
           <MenuList
+            ref={dropRef}
             setRankingOpen={setRankingOpen}
             rankingOpen={rankingOpen}
             setRankingName={setRankingName}
@@ -37,12 +45,14 @@ const DropList = ({
       </div>
       <div className="relative">
         <DropDown
+          dropOpen={numOfRowOpen}
           type="numOfRow"
           title={numOfRowName.name}
           onClick={() => setNumOfRowOpen(!numOfRowOpen)}
         />
         {numOfRowOpen && (
           <MenuList
+            ref={dropRef2}
             setNumOfRowOpen={setNumOfRowOpen}
             numOfRowOpen={numOfRowOpen}
             setNumOfRowName={setNumOfRowName}
@@ -51,7 +61,7 @@ const DropList = ({
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default DropList;
+export default DropList

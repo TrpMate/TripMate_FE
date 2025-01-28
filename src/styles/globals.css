@@ -11,6 +11,9 @@
   .text-foreground {
     color: var(--foreground);
   }
+  .skeleton {
+    @apply bg-skeleton-shimmer bg-shimmer animate-shimmer;
+  }
 }
 
 body {

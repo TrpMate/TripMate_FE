@@ -1,16 +1,16 @@
-import { Dispatch, SetStateAction } from "react";
-import PlanSubTitle from "../PlanSubTitle";
-import PlanCalendar from "./PlanCalendar";
-import { PlanDataTypes } from "./PlanCreateContent";
-import PlanDateButton from "./PlanDateButton";
+import { Dispatch, SetStateAction } from 'react'
+import PlanSubTitle from '../PlanSubTitle'
+import PlanCalendar from './PlanCalendar'
+import { PlanDataTypes } from './PlanCreateContent'
+import PlanDateButton from './PlanDateButton'
 
 type PlanDateSelectProps = {
-  isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
-  selectedDate: PlanDataTypes;
-  setSelectedDate: Dispatch<SetStateAction<PlanDataTypes>>;
-  onClick: () => void;
-};
+  isOpen: boolean
+  setIsOpen: (isOpen: boolean) => void
+  selectedDate: PlanDataTypes
+  setSelectedDate: Dispatch<SetStateAction<PlanDataTypes>>
+  onClick: () => void
+}
 
 const PlanDateSelect = ({
   isOpen,
@@ -20,14 +20,15 @@ const PlanDateSelect = ({
   onClick,
 }: PlanDateSelectProps) => {
   return (
-    <div className="w-full mt-[25px]">
+    <div className="mt-[25px] w-full">
       <PlanSubTitle cType="title" title="여행 기간" />
-      <div className="w-full relative flex justify-between items-center">
+      <div className="relative flex w-full items-center justify-between">
+        {isOpen && <div className="absolute top-0 h-[60px] w-full" />}
         <PlanDateButton onClick={onClick} title={selectedDate.startDate} />
         <p>-</p>
         <PlanDateButton onClick={onClick} title={selectedDate.endDate} />
         {isOpen && (
-          <div className="w-full absolute top-[115px] flex justify-center items-center">
+          <div className="absolute top-[115px] flex w-full items-center justify-center">
             <PlanCalendar
               selectedDate={selectedDate}
               setSelectedDate={setSelectedDate}
@@ -37,7 +38,7 @@ const PlanDateSelect = ({
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PlanDateSelect;
+export default PlanDateSelect
