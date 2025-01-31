@@ -34,8 +34,7 @@ const PlacePage = () => {
         contentTypeId: listType,
       })
       setIsLoading(false)
-      setTourList(data.response.body.items.item ?? [])
-      console.log(data.response.body.items.item)
+      setTourList(data ?? [])
     } catch (error) {
       console.log(error)
       setIsLoading(false)
@@ -54,22 +53,21 @@ const PlacePage = () => {
         setListType={setListType}
         onClick={getTourList}
       />
-      <div className="w-full px-[223px]">
-        <div className="flex w-full flex-col items-center justify-center pt-[40px]">
+      <div className="flex w-full justify-center px-[30px]">
+        <div className="flex w-[1440px] flex-col items-center justify-center pt-[40px]">
           <DropList
             rankingName={rankingName}
             setRankingName={setRankingName}
             numOfRowName={numOfRowName}
             setNumOfRowName={setNumOfRowName}
           />
-
-          {isLoading ? (
-            <div className="flex w-full flex-wrap justify-center gap-[40px]">
+          <div className="flex flex-wrap items-center justify-center gap-[40px] pb-[150px] pt-[40px]">
+            {isLoading ? (
               <Skeleton length={8} skeletonType="place" />
-            </div>
-          ) : (
-            <ContentList tourList={tourList} />
-          )}
+            ) : (
+              <ContentList tourList={tourList} />
+            )}
+          </div>
         </div>
       </div>
     </div>

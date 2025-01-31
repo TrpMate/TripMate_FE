@@ -35,6 +35,7 @@ const MainItemList = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [listType, setListType] = useState(12)
   const [searchText, setSearchText] = useState('')
+
   const getTourList = async () => {
     try {
       setIsLoading(true)
@@ -46,8 +47,8 @@ const MainItemList = () => {
         contentTypeId: listType,
       })
       setIsLoading(false)
-      setTourList(data.response.body.items.item ?? [])
-      console.log(data.response.body.items.item)
+      setTourList(data ?? [])
+      console.log(data)
     } catch (error) {
       console.log(error)
       setIsLoading(false)
@@ -69,21 +70,13 @@ const MainItemList = () => {
             onClick={getTourList}
           />
         </div>
-        {isLoading ? (
-          <div className="w-full">
-            <div className="mt-[111px] flex w-full flex-wrap justify-center gap-[40px]">
-              <Skeleton length={4} skeletonType="main" />
-            </div>
-          </div>
-        ) : (
-          <div className="w-full">
-            <div className="mt-[111px] flex flex-wrap justify-center gap-[40px]">
-              {tourList.map((item) => (
-                <MenuItem key={item.contentid} item={item} />
-              ))}
-            </div>
-          </div>
-        )}
+        <div className="mt-[111px] flex w-full flex-wrap justify-center gap-[40px]">
+          {isLoading ? (
+            <Skeleton length={4} skeletonType="main" />
+          ) : (
+            tourList.map((item) => <MenuItem key={item.contentid} item={item} />)
+          )}
+        </div>
       </div>
       <MoreButton listType={listType} searchText={searchText} />
     </>
