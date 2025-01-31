@@ -3,7 +3,6 @@ import DropItem from './DropItem'
 
 type MenuListProps = {
   ref: Ref<HTMLDivElement>
-  rankingOpen?: boolean
   numOfRowOpen?: boolean
   numOfRowName?: string
   rankingName?: string
@@ -15,7 +14,6 @@ type MenuListProps = {
 
 const MenuList = ({
   ref,
-  rankingOpen,
   numOfRowOpen,
   numOfRowName,
   rankingName,

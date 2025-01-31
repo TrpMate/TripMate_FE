@@ -37,7 +37,6 @@ const DropList = ({
           <MenuList
             ref={dropRef}
             setRankingOpen={setRankingOpen}
-            rankingOpen={rankingOpen}
             setRankingName={setRankingName}
             rankingName={rankingName.name}
           />

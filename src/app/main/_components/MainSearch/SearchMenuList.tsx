@@ -1,7 +1,7 @@
 import { Ref } from 'react'
 
 type SearchMenuListProps = {
-  ref?: Ref<HTMLDivElement>
+  ref: Ref<HTMLDivElement>
   setCategoryName: (name: string) => void
   setMenuOpen: (open: boolean) => void
   setListType?: (listType: number) => void
@@ -35,7 +35,9 @@ const SearchMenuList = ({
           onClick={() => {
             setCategoryName(category.name)
             setMenuOpen(false)
-            setListType && setListType(category.code)
+            if (setListType) {
+              setListType(category.code)
+            }
           }}
         >
           {category.name}
