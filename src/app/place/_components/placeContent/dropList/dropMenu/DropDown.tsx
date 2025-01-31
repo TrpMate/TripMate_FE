@@ -9,14 +9,14 @@ type DropDownProps = {
 
 const DropDown = ({ dropOpen, type, onClick, title }: DropDownProps) => {
   const buttonWidth = {
-    ranking: 'w-[130px] gap-[21px]',
-    numOfRow: 'w-[170px] gap-[15px]',
+    ranking: 'gap-[21px]',
+    numOfRow: 'gap-[15px]',
   }
   return (
     <div className="relative">
       {dropOpen && <div className={`${buttonWidth[type]} absolute top-0 z-10 h-full`} />}
       <div
-        className={`${buttonWidth[type]} relative flex cursor-pointer items-center rounded-[10px] border border-[#CCCCCC] py-[17px] pl-[19px] pr-[12px]`}
+        className={`${buttonWidth[type]} relative flex cursor-pointer items-center rounded-[10px] border border-[#CCCCCC] py-[16.5px] pl-[18px] pr-[12px]`}
         onClick={onClick}
       >
         <div className="flex h-[25px] items-center">
