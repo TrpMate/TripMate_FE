@@ -1,11 +1,9 @@
 const PlanTitle = () => {
   return (
-    <div className="flex items-center h-[50px]">
-      <p className="text-[40px] leading-none font-medium text-[#353535]">
-        Plan your trip
-      </p>
+    <div className="flex h-[50px] items-center">
+      <p className="text-[40px] font-medium leading-none text-[#353535]">Plan your trip</p>
     </div>
-  );
-};
+  )
+}
 
-export default PlanTitle;
+export default PlanTitle

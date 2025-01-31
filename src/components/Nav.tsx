@@ -21,7 +21,7 @@ const Nav = () => {
       </ul>
       <Link href={'/login'}>
         <div className="flex w-[165.33px] justify-end self-start">
-          <div className="leading-0 flex h-[40px] items-center justify-center rounded-[38px] border border-[rgba(0,0,0,0.5)] px-[22px] py-[9px]">
+          <div className="flex h-[40px] items-center justify-center rounded-[38px] border border-[rgba(0,0,0,0.5)] px-[22px] py-[9px] leading-none">
             <p className="text-[18px] font-bold leading-[22px] text-[#353535]">Login</p>
           </div>
         </div>

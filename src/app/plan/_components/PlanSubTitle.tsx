@@ -1,20 +1,14 @@
 type PlanSubTitleProps = {
-  cType?: string;
-  title: string;
-};
+  cType?: string
+  title: string
+}
 
 const PlanSubTitle = ({ cType, title }: PlanSubTitleProps) => {
   return (
-    <div
-      className={`flex items-center h-[22px] ${
-        cType === "title" ? "mb-[15px]" : "mb-0"
-      }`}
-    >
-      <p className="text-[#353535] text-[18px] leading-none font-medium">
-        {title}
-      </p>
+    <div className={`flex h-[22px] items-center ${cType === 'title' ? 'mb-[15px]' : 'mb-0'}`}>
+      <p className="text-[18px] font-medium leading-none text-[#353535]">{title}</p>
     </div>
-  );
-};
+  )
+}
 
-export default PlanSubTitle;
+export default PlanSubTitle

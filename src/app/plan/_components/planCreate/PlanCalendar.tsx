@@ -43,10 +43,7 @@ const PlanCalendar = ({ selectedDate, setSelectedDate, setIsOpen }: PlanCalendar
   }
 
   return (
-    <div
-      ref={pickerRef}
-      className="scale-[1.3] transform overflow-hidden rounded-2xl border bg-white"
-    >
+    <div ref={pickerRef} className="scale-[1.3] overflow-hidden rounded-2xl border bg-white">
       <style>{css}</style>
       <DayPicker
         mode="range"

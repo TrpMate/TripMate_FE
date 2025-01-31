@@ -1,14 +1,14 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { getData } from '../main/_api'
 import Skeleton from '../main/_components/Skeleton'
 import PlaceBanner from './_components/placeBanner/PlaceBanner'
 import ContentList from './_components/placeContent/contentList/ContentList'
 import DropList from './_components/placeContent/dropList/DropList'
 
-const PlacePage = () => {
+const PlacePageContent = () => {
   const params = useSearchParams()
   const [tourList, setTourList] = useState([])
   const [isLoading, setIsLoading] = useState(false)
@@ -71,6 +71,14 @@ const PlacePage = () => {
         </div>
       </div>
     </div>
+  )
+}
+
+const PlacePage = () => {
+  return (
+    <Suspense fallback={<div>로딩중</div>}>
+      <PlacePageContent />
+    </Suspense>
   )
 }
 

@@ -26,8 +26,8 @@ const ContentItem = ({ href, src, title, content }: ContentItemProps) => {
       </div>
       <div className="flex items-center justify-between px-[21px] py-[25px]">
         <div className="max-w-[245px]">
-          <p className="leading-1 truncate text-[22px] font-medium">{title}</p>
-          <p className="leading-1 mt-[5px] text-[14px] font-medium text-[#353535]">{content}</p>
+          <p className="truncate text-[22px] font-medium leading-none">{title}</p>
+          <p className="mt-[5px] text-[14px] font-medium leading-none text-[#353535]">{content}</p>
         </div>
         <PlaceRightArrow />
       </div>

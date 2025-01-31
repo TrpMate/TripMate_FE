@@ -13,7 +13,7 @@ const PlaceBanner = ({ keyword, setKeyword, setListType, onClick }: PlaceBannerP
   return (
     <div className="relative">
       <PlaceTopBanner />
-      <div className="absolute top-[0px] flex h-full w-full justify-center">
+      <div className="absolute top-0 flex size-full justify-center">
         <div className="pt-[225px]">
           <MainSearch
             searchText={keyword}

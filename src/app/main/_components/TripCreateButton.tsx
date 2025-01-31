@@ -1,39 +1,34 @@
-import React from "react";
-import TripTitle from "./TripTitle";
+import TripTitle from './TripTitle'
 
 type TripCreateButtonProps = {
-  title: string;
-  buttonPosition: string;
-  link: string;
-};
+  title: string
+  buttonPosition: string
+  link: string
+}
 
-const TripCreateButton = ({
-  title,
-  buttonPosition,
-  link,
-}: TripCreateButtonProps) => {
+const TripCreateButton = ({ title, buttonPosition, link }: TripCreateButtonProps) => {
   const buttonType = {
-    left: "left",
-    right: "right",
-  };
+    left: 'left',
+    right: 'right',
+  }
 
   return (
     <div className="flex items-center">
       {buttonType.right === buttonPosition ? (
         <>
-          <div className="w-[10px] h-[10px] bg-white rounded-full" />
-          <div className="w-[115px] h-[1px] bg-white" />
+          <div className="size-[10px] rounded-full bg-white" />
+          <div className="h-px w-[115px] bg-white" />
           <TripTitle title={title} link={link} />
         </>
       ) : (
         <>
           <TripTitle title={title} link={link} />
-          <div className="w-[115px] h-[1px] bg-white" />
-          <div className="w-[10px] h-[10px] bg-white rounded-full" />
+          <div className="h-px w-[115px] bg-white" />
+          <div className="size-[10px] rounded-full bg-white" />
         </>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default TripCreateButton;
+export default TripCreateButton

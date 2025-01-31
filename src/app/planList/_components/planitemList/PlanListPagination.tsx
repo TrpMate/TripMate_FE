@@ -14,7 +14,7 @@ const PlanListPagination = () => {
           <PlanListLeft />
         </div>
         <div
-          className="flex h-[29px] w-[29px] cursor-pointer items-center justify-center rounded-full bg-[#353535]"
+          className="flex size-[29px] cursor-pointer items-center justify-center rounded-full bg-[#353535]"
           onClick={() => {}}
         >
           <div className="flex h-[17px] items-center">

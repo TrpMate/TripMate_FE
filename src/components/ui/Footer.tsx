@@ -1,22 +1,21 @@
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link'
 
 const Footer = () => {
   return (
-    <div className="h-[170px] bg-[#F1F1F1] py-[40px] px-[30px]">
+    <div className="h-[170px] bg-[#F1F1F1] px-[30px] py-[40px]">
       <div>
-        <p className="text-[22px] leading-[27px] font-bold">TripMate</p>
+        <p className="text-[22px] font-bold leading-[27px]">TripMate</p>
         <Link href="/">
-          <p className="text-[16px] leading-[20px] mt-[20px] font-bold">
+          <p className="mt-[20px] text-[16px] font-bold leading-[20px]">
             이용약관 | 개인정보처리방침
           </p>
         </Link>
-        <p className="mt-[6px] text-[14px] text-[#AAAAAA] font-bold leading-[17px]">
+        <p className="mt-[6px] text-[14px] font-bold leading-[17px] text-[#AAAAAA]">
           Copyright © 2024 TripMate All rights reserved.
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

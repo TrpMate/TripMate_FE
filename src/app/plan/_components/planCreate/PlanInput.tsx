@@ -1,9 +1,9 @@
-import PlanSubTitle from "../PlanSubTitle";
+import PlanSubTitle from '../PlanSubTitle'
 
 type PlanInputProps = {
-  planTitle: string;
-  setPlanTitle: (planTitle: string) => void;
-};
+  planTitle: string
+  setPlanTitle: (planTitle: string) => void
+}
 
 const PlanInput = ({ planTitle, setPlanTitle }: PlanInputProps) => {
   return (
@@ -12,10 +12,10 @@ const PlanInput = ({ planTitle, setPlanTitle }: PlanInputProps) => {
       <input
         value={planTitle}
         onChange={(e) => setPlanTitle(e.target.value)}
-        className="pl-5 w-[562px] h-[60px] outline-none rounded-[10px] border border-[#CCCCCC]"
+        className="h-[60px] w-[562px] rounded-[10px] border border-[#CCCCCC] pl-5 outline-none"
       />
     </div>
-  );
-};
+  )
+}
 
-export default PlanInput;
+export default PlanInput
