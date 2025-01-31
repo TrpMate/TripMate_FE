@@ -3,7 +3,7 @@
 import { useState } from 'react'
 
 const PlanListMenuButton = () => {
-  const [isClicked, setIsClicked] = useState(0)
+  const [isClicked, setIsClicked] = useState(2)
   const buttonList = [
     { id: 1, name: '내 정보' },
     { id: 2, name: '내 플랜 보기' },
