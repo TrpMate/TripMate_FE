@@ -14,10 +14,10 @@ export async function getData(params: ParamsType) {
     ...params,
     keyword: params.keyword || '투어',
   }
-  const response = await api.get('tourAPI/tour-searchKeyword', {
+  const response = await api.get('/tourAPI/tour-searchKeyword', {
     params: defaultParams,
   })
   if (response.status === 200) {
-    return response.data
+    return response.data.response.body.items.item
   }
 }
