@@ -32,7 +32,7 @@ const MenuItem = ({ item }: MenuItemProps) => {
     <Link href={`/place/${item.contentid}t${item.contenttypeid}`}>
       <div className="relative h-[500px] w-[330px] overflow-hidden rounded-[20px]">
         <Image
-          src={item.firstimage ? item.firstimage : '/images/no_image.jpg'}
+          src={item.firstimage ? item.firstimage : '/images/main_no_image.png'}
           style={{ objectFit: 'cover' }}
           fill
           sizes="1"
