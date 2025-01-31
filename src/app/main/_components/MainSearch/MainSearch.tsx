@@ -31,7 +31,15 @@ const MainSearch = ({ searchText, setSearchText, onClick, setListType }: MainSea
         <Categories categoryName={categoryName} onClick={() => setMenuOpen(true)} />
       </div>
       <div className="h-full w-[1px] bg-[#CCCCCC]" />
-      <MainSearchInput searchText={searchText} onChange={(e) => setSearchText(e.target.value)} />
+      <MainSearchInput
+        searchText={searchText}
+        onChange={(e) => setSearchText(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            onClick()
+          }
+        }}
+      />
       <CloseButton
         searchText={searchText}
         onClick={() => {
