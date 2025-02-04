@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server'
 // 인증이 필요하지 않은 라우트
 const publicRoutes = [
   '/login',
-  '/signup',
+  '/join',
   '/main',
   '/place',
   '/place/*',
