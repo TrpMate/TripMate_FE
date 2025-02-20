@@ -2,7 +2,13 @@ import { createClientApi } from "@/shared/api/client-api";
 import { useMutation } from "@tanstack/react-query";
 import { Cookies } from "react-cookie";
 
-export async function postPlan(postData: any) {
+type PostPlanProps = {
+  planTitle: string;
+  startDate: string;
+  endDate: string;
+};
+
+export async function postPlan(postData: PostPlanProps) {
   try {
     const cookie = new Cookies();
     const api = createClientApi();
@@ -30,6 +36,6 @@ export async function postPlan(postData: any) {
 }
 
 export const useCreatePlan = () => {
-  const mutationFn = (postData: any) => postPlan(postData);
+  const mutationFn = (postData: PostPlanProps) => postPlan(postData);
   return useMutation({ mutationFn });
 };
