@@ -6,10 +6,10 @@ export const userNicknameCheck = async (nickname: string) => {
   try {
     const api = createClientApi();
     const response = await api.get(
-      `/user/check-duplicate/nickname=${nickname}`
+      `/user/check-duplicate/nickname/${nickname}`
     );
     if (response.status === 200) {
-      return response;
+      return response.data;
     }
   } catch (error) {
     console.log("error", error);

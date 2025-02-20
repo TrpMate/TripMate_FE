@@ -27,14 +27,32 @@ const JoinInput = ({
       }`}
     >
       <H22Title title={title} />
-      <div className="relative flex items-center">
-        <input
-          type={type}
-          value={value}
-          className="w-full border outline-none rounded-[10px] border-[#CCCCCC] h-[60px] pl-5 text-[18px] leading-none"
-          placeholder={placeholder}
-          onChange={onChange}
-        />
+      <div className=" flex items-center">
+        <div className="relative w-full flex items-center">
+          <input
+            type={type}
+            value={value}
+            className="w-full border outline-none rounded-[10px] border-[#CCCCCC] h-[60px] pl-5 text-[18px] leading-none"
+            placeholder={placeholder}
+            onChange={onChange}
+          />
+          {title === "아이디(이메일)" && value !== "" && (
+            <JoinMessage title={valid ? "사용가능" : "사용 불가능"} />
+          )}
+          {title === "닉네임" && valid !== undefined && (
+            <JoinMessage
+              input="닉네임"
+              title={valid ? "사용가능" : "사용 불가능"}
+            />
+          )}
+          {title === "비밀번호(8~16자 영문 대 소문자, 숫자)" &&
+            value !== "" && (
+              <JoinMessage title={valid ? "사용가능" : "사용 불가능"} />
+            )}
+          {title === "비밀번호 확인" && value !== "" && (
+            <JoinMessage title={valid ? "" : "비밀번호 불일치"} />
+          )}
+        </div>
         {title === "닉네임" && (
           <div
             className="ml-3 w-[100px] h-[60px] flex items-center justify-center border rounded-xl cursor-pointer"
@@ -42,15 +60,6 @@ const JoinInput = ({
           >
             중복확인
           </div>
-        )}
-        {title === "아이디(이메일)" && value !== "" && (
-          <JoinMessage title={valid ? "사용가능" : "사용 불가능"} />
-        )}
-        {title === "비밀번호(8~16자 영문 대 소문자, 숫자)" && value !== "" && (
-          <JoinMessage title={valid ? "사용가능" : "사용 불가능"} />
-        )}
-        {title === "비밀번호 확인" && value !== "" && (
-          <JoinMessage title={valid ? "" : "비밀번호 불일치"} />
         )}
       </div>
     </div>

@@ -7,6 +7,8 @@ type JoinInputFormProps = {
   isPasswordCheckValid: (password: string, passwordCheck: string) => boolean;
   joinData: JoinData;
   setJoinData: (data: JoinData) => void;
+  nicknameValid: boolean | undefined;
+  setNicknameValid: (valid: boolean | undefined) => void;
   handleNicknameCheck: (nickname: string) => void;
 };
 
@@ -16,8 +18,11 @@ const JoinInputForm = ({
   isPasswordCheckValid,
   joinData,
   setJoinData,
+  nicknameValid,
+  setNicknameValid,
   handleNicknameCheck,
 }: JoinInputFormProps) => {
+  console.log("nicknameValid", nicknameValid);
   return (
     <>
       <JoinInput
@@ -35,11 +40,17 @@ const JoinInputForm = ({
         onChange={(e) => setJoinData({ ...joinData, name: e.target.value })}
       />
       <JoinInput
+        valid={nicknameValid}
         type="text"
         value={joinData.nickname}
         title="닉네임"
         onClick={() => handleNicknameCheck(joinData.nickname)}
-        onChange={(e) => setJoinData({ ...joinData, nickname: e.target.value })}
+        onChange={(e) => {
+          setJoinData({ ...joinData, nickname: e.target.value });
+          if (e.target.value.length === 0) {
+            setNicknameValid(undefined);
+          }
+        }}
       />
       <JoinInput
         valid={isPasswordValid(joinData.password)}

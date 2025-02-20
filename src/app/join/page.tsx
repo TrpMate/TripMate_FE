@@ -24,6 +24,9 @@ const JoinPage = () => {
     password: "",
     passwordCheck: "",
   });
+  const [nicknameValid, setNicknameValid] = useState<boolean | undefined>(
+    undefined
+  );
   const { mutate } = useJoin();
   const navigate = useRouter();
   const isEmailValid = (email: string) => {
@@ -61,14 +64,16 @@ const JoinPage = () => {
   };
 
   const handleNicknameCheck = async () => {
+    console.log("dd");
     try {
       const checked = await userNicknameCheck(joinData.nickname);
       console.log("checked", checked);
-      return checked;
+      setNicknameValid(checked);
     } catch (error) {
       console.log("error", error);
     }
   };
+  console.log("nicknameValid", nicknameValid);
 
   return (
     <div className="w-full flex flex-col justify-center items-center">
@@ -82,6 +87,8 @@ const JoinPage = () => {
             isEmailValid={isEmailValid}
             isPasswordValid={isPasswordValid}
             isPasswordCheckValid={isPasswordCheckValid}
+            nicknameValid={nicknameValid}
+            setNicknameValid={setNicknameValid}
             handleNicknameCheck={handleNicknameCheck}
           />
           <div className="mt-[50px]">
