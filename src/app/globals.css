@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.skeleton {
+  @apply bg-skeleton-shimmer bg-shimmer animate-shimmer;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --rdp-selected-border: 1px solid var(--rdp-accent-color);
+}
+
+.alert_animation {
+  animation: fadeIn 300ms;
+  transform: all 300ms ease-in-out;
+}
+
+a svg:hover #nevIon {
+  fill: #aed400;
+}
+
+.transition_css {
+  transform: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: scale(0.5);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: "SUIT Variable", sans-serif;
+}
