@@ -52,7 +52,7 @@ export const useEmailLogin = () => {
   });
 };
 
-export const useKakaoLogin = () => {
+export const useSocialLogin = () => {
   const mutationFn = (data: LoginData) =>
     postLogin({ code: data.code, socialType: data.socialType });
   return useMutation({

@@ -4,7 +4,7 @@ import TopBanner from "@/components/topBanner/TopBanner";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import { Cookies } from "react-cookie";
-import { useEmailLogin, useKakaoLogin } from "./_api";
+import { useEmailLogin, useSocialLogin } from "./_api";
 import LoginButton from "./_components/LoginButton";
 import LoginForm from "./_components/LoginForm";
 import LoginModal from "./_components/loginModal/LoginModal";
@@ -20,27 +20,32 @@ const LoginContent = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const cookies = new Cookies();
   const { mutate } = useEmailLogin();
-  const { mutate: kakaoMutate } = useKakaoLogin();
+  const { mutate: socialMutate } = useSocialLogin();
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
   const code = params.get("code");
   const navigate = useRouter();
+  const handleSocialType = (title: string) => {
+    sessionStorage.setItem("socialType", title);
+  };
 
   useEffect(() => {
     if (code) {
-      console.log("code", code);
-      kakaoMutate(
-        { code, socialType: "kakao" },
-        {
-          onSuccess: (data) => {
-            cookies.set("token", data!.headers["authorization"]);
-            cookies.set("refreshToken", data!.headers["refresh-token"]);
-            navigate.push("/");
-          },
-        }
-      );
+      console.log(sessionStorage.getItem("socialType"));
+      if (sessionStorage.getItem("socialType")) {
+        socialMutate(
+          { code, socialType: sessionStorage.getItem("socialType")! },
+          {
+            onSuccess: (data) => {
+              cookies.set("token", data!.headers["authorization"]);
+              cookies.set("refreshToken", data!.headers["refresh-token"]);
+              navigate.push("/");
+            },
+          }
+        );
+      }
     }
   }, [code]);
 
@@ -66,11 +71,19 @@ const LoginContent = () => {
           loginType="kakao"
           link="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=438cf3e1fed5cae3fa8aba30fd11373c&redirect_uri=http://localhost:3000/login&prompt=login"
           title="카카오 로그인"
+          onClick={() => handleSocialType("kakao")}
         />
         <SocialLogin
           loginType="google"
-          link="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=438cf3e1fed5cae3fa8aba30fd11373c&redirect_uri=http://localhost:3000/login&prompt=login"
+          link="https://accounts.google.com/o/oauth2/auth?client_id=935790641586-mka3tc08fttdofiodu8v295569ntugnj.apps.googleusercontent.com&redirect_uri=http://localhost:3000/login&response_type=code&scope=openid email profile"
           title="구글 로그인"
+          onClick={() => handleSocialType("google")}
+        />
+        <SocialLogin
+          loginType="google"
+          link="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${NAVER_CLIENT_ID}&state=${STATE}&redirect_uri=${REDIRECT_URI}"
+          title="네이버 로그인"
+          onClick={() => handleSocialType("naver")}
         />
         <NotUserContent setModalOpen={setModalOpen} />
       </div>
