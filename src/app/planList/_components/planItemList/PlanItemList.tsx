@@ -25,20 +25,22 @@ const PlanItemList = () => {
       {isLoading ? (
         <div>로딩중</div>
       ) : (
-        data?.map((item) => (
-          <PlanListItem
-            key={item.id}
-            item={item}
-            onClick={() =>
-              mutate(item.id, {
-                onSuccess: () => {
-                  console.log("성공");
-                  refetch();
-                },
-              })
-            }
-          />
-        ))
+        <div className="flex flex-col-reverse">
+          {data?.map((item) => (
+            <PlanListItem
+              key={item.id}
+              item={item}
+              onClick={() =>
+                mutate(item.id, {
+                  onSuccess: () => {
+                    console.log("성공");
+                    refetch();
+                  },
+                })
+              }
+            />
+          ))}
+        </div>
       )}
       <PlanListPagination />
     </div>
