@@ -23,7 +23,7 @@ const PlanItemList = () => {
     <div className="w-full pt-[30px]">
       <PlanItemListTitle />
       {isLoading ? (
-        <div>로딩중</div>
+        <div>Loading..</div>
       ) : (
         <div className="flex flex-col-reverse">
           {data?.map((item) => (
