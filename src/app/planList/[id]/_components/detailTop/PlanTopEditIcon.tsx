@@ -1,10 +1,7 @@
+import { OnClickProps } from "@/app/login/types/loginType";
 import PlanDetailEdit from "@/utils/svg/PlanDetailEdit";
 
-type PlanTopEditIconProps = {
-  onClick: () => void;
-};
-
-const PlanTopEditIcon = ({ onClick }: PlanTopEditIconProps) => {
+const PlanTopEditIcon = ({ onClick }: OnClickProps) => {
   return (
     <div className="cursor-pointer" onClick={onClick}>
       <PlanDetailEdit />

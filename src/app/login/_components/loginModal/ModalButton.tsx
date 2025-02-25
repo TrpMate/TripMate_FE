@@ -1,10 +1,7 @@
 import H27Title from "@/components/subTitle/H27Title";
+import { OnClickProps } from "../../types/loginType";
 
-type ModalButtonProps = {
-  onClick: () => void;
-};
-
-const ModalButton = ({ onClick }: ModalButtonProps) => {
+const ModalButton = ({ onClick }: OnClickProps) => {
   return (
     <div
       className="mt-[40px] flex items-center justify-center bg-[#353535] text-white rounded-[60px] h-[65px]"

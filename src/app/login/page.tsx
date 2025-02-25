@@ -10,16 +10,13 @@ import LoginForm from "./_components/LoginForm";
 import LoginModal from "./_components/loginModal/LoginModal";
 import NotUserContent from "./_components/NotUserContent";
 import SocialLogin from "./_components/SocialLogin";
-export type emailLoginData = {
-  email: string;
-  password: string;
-};
 
 const LoginContent = () => {
   const params = useSearchParams();
   const [modalOpen, setModalOpen] = useState(false);
   const cookies = new Cookies();
   const { mutate } = useEmailLogin();
+  const [isErrorMsg, setIsErrorMsg] = useState("");
   const { mutate: socialMutate } = useSocialLogin();
   const [loginData, setLoginData] = useState({
     email: "",
@@ -55,17 +52,35 @@ const LoginContent = () => {
       <TopBanner />
       <div className="pt-[200px] flex flex-col w-[562px]">
         <H27Title title="계정에 로그인 하세요" />
-        <LoginForm loginData={loginData} setLoginData={setLoginData} />
+        <LoginForm
+          loginData={loginData}
+          setLoginData={setLoginData}
+          setIsErrorMsg={setIsErrorMsg}
+        />
+        <div className="mt-3">
+          <p className="text-[red]">{isErrorMsg}</p>
+        </div>
         <LoginButton
-          onClick={() =>
+          onClick={() => {
+            if (!loginData.email || !loginData.password) {
+              setIsErrorMsg("이메일 또는 비밀번호를 입력해주세요.");
+              return;
+            }
             mutate(loginData, {
               onSuccess: (data) => {
                 cookies.set("token", data!["authorization"]);
                 cookies.set("refreshToken", data!["refresh-token"]);
                 navigate.push("/");
               },
-            })
-          }
+              onError: (error: any) => {
+                if (error.message === "404") {
+                  setIsErrorMsg("존재하지 않는 이메일입니다.");
+                  return;
+                }
+                setIsErrorMsg("이메일 또는 비밀번호가 일치하지 않습니다.");
+              },
+            });
+          }}
         />
         <SocialLogin
           loginType="kakao"
@@ -80,7 +95,7 @@ const LoginContent = () => {
           onClick={() => handleSocialType("google")}
         />
         <SocialLogin
-          loginType="google"
+          loginType="naver"
           link="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${NAVER_CLIENT_ID}&state=${STATE}&redirect_uri=${REDIRECT_URI}"
           title="네이버 로그인"
           onClick={() => handleSocialType("naver")}

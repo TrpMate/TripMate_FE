@@ -7,14 +7,7 @@ import { useState } from "react";
 import { useJoin, userNicknameCheck } from "./_api";
 import JoinInputForm from "./components/JoinInputForm";
 import JoinTitle from "./components/JoinTitle";
-
-export type JoinData = {
-  email: string;
-  name: string;
-  nickname: string;
-  password: string;
-  passwordCheck: string;
-};
+import { JoinData } from "./types/joinType";
 
 const JoinPage = () => {
   const [joinData, setJoinData] = useState<JoinData>({

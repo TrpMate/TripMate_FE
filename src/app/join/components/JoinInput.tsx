@@ -1,15 +1,6 @@
 import H22Title from "@/components/subTitle/H22Title";
+import { JoinInputProps } from "../types/joinType";
 import JoinMessage from "./JoinMessage";
-
-type JoinInputProps = {
-  valid?: boolean;
-  type: "text" | "password";
-  value: string;
-  title: string;
-  placeholder?: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onClick?: () => void;
-};
 
 const JoinInput = ({
   valid,

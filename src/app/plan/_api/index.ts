@@ -1,12 +1,7 @@
 import { createClientApi } from "@/shared/api/client-api";
 import { useMutation } from "@tanstack/react-query";
 import { Cookies } from "react-cookie";
-
-type PostPlanProps = {
-  planTitle: string;
-  startDate: string;
-  endDate: string;
-};
+import { PostPlanProps } from "../types/planType";
 
 export async function postPlan(postData: PostPlanProps) {
   try {

@@ -1,12 +1,5 @@
 import { CategoryList } from "@/utils/Menu";
-import { Ref } from "react";
-
-type SearchMenuListProps = {
-  ref: Ref<HTMLDivElement>;
-  setCategoryName: (name: string) => void;
-  setMenuOpen: (open: boolean) => void;
-  setListType?: (listType: number) => void;
-};
+import { SearchMenuListProps } from "../../types/mainType";
 
 const SearchMenuList = ({
   ref,

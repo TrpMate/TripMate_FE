@@ -1,8 +1,4 @@
-type LoginInputProps = {
-  inputType: "text" | "password";
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
+import { LoginInputProps } from "../types/loginType";
 
 const LoginInput = ({ inputType, value, onChange }: LoginInputProps) => {
   const typeList = {

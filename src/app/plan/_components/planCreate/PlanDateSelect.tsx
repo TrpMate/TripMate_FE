@@ -1,16 +1,7 @@
-import { Dispatch, SetStateAction } from "react";
+import { PlanDateSelectProps } from "../../types/planType";
 import PlanSubTitle from "../PlanSubTitle";
 import PlanCalendar from "./PlanCalendar";
-import { PlanDataTypes } from "./PlanCreateContent";
 import PlanDateButton from "./PlanDateButton";
-
-type PlanDateSelectProps = {
-  isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
-  selectedDate: PlanDataTypes;
-  setSelectedDate: Dispatch<SetStateAction<PlanDataTypes>>;
-  onClick: () => void;
-};
 
 const PlanDateSelect = ({
   isOpen,

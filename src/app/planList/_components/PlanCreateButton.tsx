@@ -1,9 +1,5 @@
 import Link from "next/link";
-
-type PlanCreateButtonProps = {
-  link: string;
-  title: string;
-};
+import { PlanCreateButtonProps } from "../types/planListType";
 
 const PlanCreateButton = ({ link, title }: PlanCreateButtonProps) => {
   return (

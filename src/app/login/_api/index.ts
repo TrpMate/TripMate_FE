@@ -1,11 +1,6 @@
 import { createClientApi } from "@/shared/api/client-api";
 import { useMutation } from "@tanstack/react-query";
-import { emailLoginData } from "../page";
-
-type LoginData = {
-  code: string;
-  socialType: string;
-};
+import { emailLoginData, LoginData } from "../types/loginType";
 
 export const postLogin = async ({ code, socialType }: LoginData) => {
   try {
@@ -36,9 +31,8 @@ export const userEmailLogin = async (data: emailLoginData) => {
       return response.headers;
     }
     return null;
-  } catch (error) {
-    console.log("error", error);
-    throw new Error("로그인에 실패했습니다.");
+  } catch (error: any) {
+    throw new Error(error.response.status);
   }
 };
 

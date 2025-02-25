@@ -1,12 +1,6 @@
 import { createClientApi } from "@/shared/api/client-api";
 import { useQuery } from "@tanstack/react-query";
-
-type getDetailDataProps = {
-  data: {
-    contentId: number;
-    contentTypeId: number;
-  };
-};
+import { getDetailDataProps } from "../types/placeType";
 
 export const getDetailData = async ({ data }: getDetailDataProps) => {
   const api = createClientApi();

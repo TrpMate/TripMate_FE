@@ -2,16 +2,10 @@
 
 import { useOnclickOutside } from "@/hooks/useOnClickOutSide";
 import { useRef, useState } from "react";
+import { MainSearchProps } from "../../types/mainType";
 import Categories from "./Categories";
 import MainSearchInput from "./MainSearchInput";
 import SearchMenuList from "./SearchMenuList";
-
-type MainSearchProps = {
-  searchText: string;
-  setSearchText: (text: string) => void;
-  onClick: () => void;
-  setListType?: (listType: number) => void;
-};
 
 const MainSearch = ({
   searchText,

@@ -1,9 +1,5 @@
+import { PlanInputProps } from "../../types/planType";
 import PlanSubTitle from "../PlanSubTitle";
-
-type PlanInputProps = {
-  planTitle: string;
-  setPlanTitle: (planTitle: string) => void;
-};
 
 const PlanInput = ({ planTitle, setPlanTitle }: PlanInputProps) => {
   return (

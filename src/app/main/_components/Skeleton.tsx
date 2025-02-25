@@ -1,7 +1,4 @@
-type SkeletonType = {
-  length: number;
-  skeletonType: "main" | "place";
-};
+import { SkeletonType } from "../types/mainType";
 
 const Skeleton = ({ length, skeletonType }: SkeletonType) => {
   const renderSkeleton = {

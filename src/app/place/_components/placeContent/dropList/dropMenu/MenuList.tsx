@@ -1,16 +1,5 @@
-import { Ref } from "react";
+import { MenuListProps } from "@/app/place/types/placeType";
 import DropItem from "./DropItem";
-
-type MenuListProps = {
-  ref: Ref<HTMLDivElement>;
-  numOfRowOpen?: boolean;
-  numOfRowName?: string;
-  rankingName?: string;
-  setNumOfRowOpen?: (open: boolean) => void;
-  setRankingOpen?: (open: boolean) => void;
-  setRankingName?: (value: { name: string; value: string }) => void;
-  setNumOfRowName?: (value: { name: string; value: number }) => void;
-};
 
 const MenuList = ({
   ref,

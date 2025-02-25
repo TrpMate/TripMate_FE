@@ -1,8 +1,6 @@
-type SaveButtonProps = {
-  onClick: () => void;
-};
+import { OnClickProps } from "@/app/login/types/loginType";
 
-const SaveButton = ({ onClick }: SaveButtonProps) => {
+const SaveButton = ({ onClick }: OnClickProps) => {
   return (
     <div
       className="px-[39px] py-[16.5px] mt-[45px] border border-[#CCCCCC] rounded-[30px] cursor-pointer"

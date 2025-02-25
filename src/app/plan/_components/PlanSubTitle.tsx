@@ -1,7 +1,4 @@
-type PlanSubTitleProps = {
-  cType?: string;
-  title: string;
-};
+import { PlanSubTitleProps } from "../types/planType";
 
 const PlanSubTitle = ({ cType, title }: PlanSubTitleProps) => {
   return (

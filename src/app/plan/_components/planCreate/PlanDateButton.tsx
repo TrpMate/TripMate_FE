@@ -1,9 +1,5 @@
+import { PlanDateButtonProps } from "../../types/planType";
 import PlanSubTitle from "../PlanSubTitle";
-
-type PlanDateButtonProps = {
-  onClick: () => void;
-  title: string;
-};
 
 const PlanDateButton = ({ onClick, title }: PlanDateButtonProps) => {
   return (

@@ -1,9 +1,4 @@
-type DropItemProps = {
-  type: "ranking" | "numOfRow";
-  name?: string;
-  list: { id: number; name: string }[];
-  onClick: (name: string) => () => void;
-};
+import { DropItemProps } from "@/app/place/types/placeType";
 
 const DropItem = ({ type, name, list, onClick }: DropItemProps) => {
   const buttonWidth = {

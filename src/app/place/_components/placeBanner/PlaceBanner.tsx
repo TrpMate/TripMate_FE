@@ -1,13 +1,6 @@
 import MainSearch from "@/app/main/_components/MainSearch/MainSearch";
-import { Dispatch, SetStateAction } from "react";
+import { PlaceBannerProps } from "../../types/placeType";
 import PlaceTopBanner from "./PlaceTopBanner";
-
-type PlaceBannerProps = {
-  keyword: string;
-  setKeyword: Dispatch<SetStateAction<string>>;
-  setListType: Dispatch<SetStateAction<number>>;
-  onClick: () => void;
-};
 
 const PlaceBanner = ({
   keyword,

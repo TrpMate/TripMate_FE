@@ -1,14 +1,8 @@
+import { ContentItemProps } from "@/app/place/types/placeType";
 import PlaceRightArrow from "@/utils/svg/PlaceRightArrow";
 import Image from "next/image";
 import Link from "next/link";
 import ItemIcon from "./ItemIcon";
-
-type ContentItemProps = {
-  href: string;
-  src: string;
-  title: string;
-  content: string;
-};
 
 const ContentItem = ({ href, src, title, content }: ContentItemProps) => {
   return (

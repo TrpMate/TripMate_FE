@@ -1,9 +1,5 @@
 import SearchIcon from "@/utils/svg/SearchIcon";
-import React from "react";
-
-type SearchButtonProps = {
-  onClick: () => void;
-};
+import { SearchButtonProps } from "../../types/mainType";
 
 const SearchButton = ({ onClick }: SearchButtonProps) => {
   return (

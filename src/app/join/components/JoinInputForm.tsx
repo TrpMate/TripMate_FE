@@ -1,16 +1,5 @@
-import { JoinData } from "../page";
+import { JoinInputFormProps } from "../types/joinType";
 import JoinInput from "./JoinInput";
-
-type JoinInputFormProps = {
-  isEmailValid: (email: string) => boolean;
-  isPasswordValid: (password: string) => boolean;
-  isPasswordCheckValid: (password: string, passwordCheck: string) => boolean;
-  joinData: JoinData;
-  setJoinData: (data: JoinData) => void;
-  nicknameValid: boolean | undefined;
-  setNicknameValid: (valid: boolean | undefined) => void;
-  handleNicknameCheck: (nickname: string) => void;
-};
 
 const JoinInputForm = ({
   isEmailValid,

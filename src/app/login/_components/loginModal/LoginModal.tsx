@@ -2,15 +2,12 @@
 
 import { useOnclickOutside } from "@/hooks/useOnClickOutSide";
 import { useRef, useState } from "react";
+import { LoginModalProps } from "../../types/loginType";
 import LoginModalTip from "./LoginModalTip";
 import LoginModalTop from "./LoginModalTop";
 import ModalButton from "./ModalButton";
 import ModalInput from "./ModalInput";
 import ModalTitle from "./ModalTitle";
-
-type LoginModalProps = {
-  setModalOpen: (value: boolean) => void;
-};
 
 const LoginModal = ({ setModalOpen }: LoginModalProps) => {
   const [userEmail, setUserEmail] = useState("");

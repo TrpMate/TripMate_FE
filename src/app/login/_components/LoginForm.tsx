@@ -1,35 +1,34 @@
+import { LoginFormProps } from "../types/loginType";
 import LoginInput from "./LoginInput";
 
-type LoginFormProps = {
-  loginData: {
-    email: string;
-    password: string;
-  };
-  setLoginData: (data: { email: string; password: string }) => void;
-};
-
-const LoginForm = ({ loginData, setLoginData }: LoginFormProps) => {
+const LoginForm = ({
+  loginData,
+  setLoginData,
+  setIsErrorMsg,
+}: LoginFormProps) => {
   return (
     <div className="mt-[30px] flex flex-col gap-[15px]">
       <LoginInput
         inputType="text"
         value={loginData.email}
-        onChange={(e) =>
+        onChange={(e) => {
           setLoginData({
             ...loginData,
             email: e.target.value,
-          })
-        }
+          });
+          setIsErrorMsg("");
+        }}
       />
       <LoginInput
         inputType="password"
         value={loginData.password}
-        onChange={(e) =>
+        onChange={(e) => {
           setLoginData({
             ...loginData,
             password: e.target.value,
-          })
-        }
+          });
+          setIsErrorMsg("");
+        }}
       />
     </div>
   );

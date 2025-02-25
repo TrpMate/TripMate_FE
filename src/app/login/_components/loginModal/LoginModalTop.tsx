@@ -1,11 +1,8 @@
 import H27Title from "@/components/subTitle/H27Title";
 import LoginModalClose from "@/utils/svg/LoginModalClose";
+import { OnClickProps } from "../../types/loginType";
 
-type LoginModalTopProps = {
-  onClick: () => void;
-};
-
-const LoginModalTop = ({ onClick }: LoginModalTopProps) => {
+const LoginModalTop = ({ onClick }: OnClickProps) => {
   return (
     <div className="flex justify-between items-center">
       <div className="flex items-center">

@@ -1,11 +1,5 @@
+import { DropDownProps } from "@/app/place/types/placeType";
 import PlaceDownArrow from "@/utils/svg/PlaceDownArrow";
-
-type DropDownProps = {
-  dropOpen: boolean;
-  type: "ranking" | "numOfRow";
-  onClick: () => void;
-  title: string;
-};
 
 const DropDown = ({ dropOpen, type, onClick, title }: DropDownProps) => {
   const buttonWidth = {

@@ -1,11 +1,5 @@
 import Link from "next/link";
-
-type SocialLoginProps = {
-  loginType: "kakao" | "google" | "naver";
-  link: string;
-  title: string;
-  onClick: () => void;
-};
+import { SocialLoginProps } from "../types/loginType";
 
 const SocialLogin = ({ loginType, link, title, onClick }: SocialLoginProps) => {
   const socialList = {

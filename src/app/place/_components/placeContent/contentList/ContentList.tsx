@@ -1,29 +1,5 @@
+import { ContentListProps } from "@/app/place/types/placeType";
 import ContentItem from "./ContentItem";
-
-type ContentListProps = {
-  tourList: {
-    addr1: string;
-    addr2: string;
-    areacode: number;
-    booktour: number;
-    cat1: string;
-    cat2: string;
-    cat3: string;
-    contentid: number;
-    contenttypeid: number;
-    cpyrhtDivCd: string;
-    createdtime: number;
-    firstimage: string;
-    firstimage2: string;
-    mapx: number;
-    mapy: number;
-    mlevel: number;
-    modifiedtime: number;
-    sigungucode: number;
-    tel: string;
-    title: string;
-  }[];
-};
 
 const ContentList = ({ tourList }: ContentListProps) => {
   return (

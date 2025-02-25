@@ -1,11 +1,6 @@
 import PlanListDelete from "@/utils/svg/PlanListDelete";
 import Link from "next/link";
-import { PlanItem } from "./PlanItemList";
-
-type PlanListItemProps = {
-  item: PlanItem;
-  onClick: () => void;
-};
+import { PlanListItemProps } from "../../types/planListType";
 
 const PlanListItem = ({ item, onClick }: PlanListItemProps) => {
   const formatDate = (dateString: string) => {

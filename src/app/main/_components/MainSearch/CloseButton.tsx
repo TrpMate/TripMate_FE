@@ -1,10 +1,5 @@
 import SearchCloseIcon from "@/utils/svg/SearchCloseIcon";
-import React from "react";
-
-type CloseButtonProps = {
-  searchText: string;
-  onClick: () => void;
-};
+import { CloseButtonProps } from "../../types/mainType";
 
 const CloseButton = ({ searchText, onClick }: CloseButtonProps) => {
   return (

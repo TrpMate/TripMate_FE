@@ -1,13 +1,6 @@
 import { createClientApi } from "@/shared/api/client-api";
 import { useQuery } from "@tanstack/react-query";
-
-type ParamsType = {
-  numOfRows: number;
-  pageNo: number;
-  keyword?: string;
-  arrange: string;
-  contentTypeId?: number;
-};
+import { ParamsType } from "../types/mainType";
 
 export async function getData(params: ParamsType) {
   const api = createClientApi();

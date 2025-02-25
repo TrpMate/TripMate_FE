@@ -1,6 +1,6 @@
 import { createClientApi } from "@/shared/api/client-api";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { JoinData } from "../page";
+import { JoinData } from "../types/joinType";
 
 export const userNicknameCheck = async (nickname: string) => {
   try {

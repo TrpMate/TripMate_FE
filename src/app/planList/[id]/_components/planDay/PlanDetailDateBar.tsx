@@ -1,6 +1,4 @@
-type PlanDetailDateBarProps = {
-  date: string;
-};
+import { PlanDetailDateBarProps } from "@/app/planList/types/planListType";
 
 const PlanDetailDateBar = ({ date }: PlanDetailDateBarProps) => {
   return (

@@ -1,9 +1,5 @@
 import Link from "next/link";
-
-type MoreButtonProps = {
-  listType: number;
-  searchText: string;
-};
+import { MoreButtonProps } from "../types/mainType";
 
 const MoreButton = ({ listType, searchText }: MoreButtonProps) => {
   return (

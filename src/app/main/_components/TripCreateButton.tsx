@@ -1,10 +1,5 @@
+import { TripCreateButtonProps } from "../types/mainType";
 import TripTitle from "./TripTitle";
-
-type TripCreateButtonProps = {
-  title: string;
-  buttonPosition: string;
-  link: string;
-};
 
 const TripCreateButton = ({
   title,

@@ -1,14 +1,6 @@
-import React from "react";
+import { MainSearchInputProps } from "../../types/mainType";
 import CloseButton from "./CloseButton";
 import SearchButton from "./SearchButton";
-
-type MainSearchInputProps = {
-  searchText: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  closeOnClick: () => void;
-  searchOnClick: () => void;
-};
 
 const MainSearchInput = ({
   searchText,

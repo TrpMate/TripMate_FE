@@ -1,14 +1,8 @@
+import { DropListProps } from "@/app/place/types/placeType";
 import { useOnclickOutside } from "@/hooks/useOnClickOutSide";
 import { useRef, useState } from "react";
 import DropDown from "./dropMenu/DropDown";
 import MenuList from "./dropMenu/MenuList";
-
-type DropListProps = {
-  rankingName: { name: string; value: string };
-  setRankingName: (value: { name: string; value: string }) => void;
-  numOfRowName: { name: string; value: number };
-  setNumOfRowName: (value: { name: string; value: number }) => void;
-};
 
 const DropList = ({
   rankingName,

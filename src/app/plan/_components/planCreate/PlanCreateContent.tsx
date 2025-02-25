@@ -5,14 +5,10 @@ import { format } from "date-fns";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useCreatePlan } from "../../_api";
+import { PlanDataTypes } from "../../types/planType";
 import PlanButton from "../PlanButton";
 import PlanDateSelect from "./PlanDateSelect";
 import PlanInput from "./PlanInput";
-export type PlanDataTypes = {
-  planTitle: string;
-  startDate: string;
-  endDate: string;
-};
 
 const PlanCreateContent = () => {
   const [isOpen, setIsOpen] = useState(false);

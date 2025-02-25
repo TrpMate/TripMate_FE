@@ -5,16 +5,6 @@ import PlanItemListTitle from "./PlanItemListTitle";
 import PlanListItem from "./PlanListItem";
 import PlanListPagination from "./PlanListPagination";
 
-export type PlanItem = {
-  courseName: string;
-  createdAt: string;
-  endDate: string;
-  id: number;
-  public: boolean;
-  startDate: string;
-  updatedAt: string;
-};
-
 const PlanItemList = () => {
   const { data, isLoading, refetch } = useGetPlanList();
   const { mutate } = useDeletePlan();

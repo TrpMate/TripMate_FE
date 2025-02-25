@@ -1,9 +1,5 @@
 import CategoryDownArrow from "@/utils/svg/CategoryDownArrow";
-
-type CategoriesProps = {
-  categoryName: string;
-  onClick: () => void;
-};
+import { CategoriesProps } from "../../types/mainType";
 
 const Categories = ({ categoryName, onClick }: CategoriesProps) => {
   return (

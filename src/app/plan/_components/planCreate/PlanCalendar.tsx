@@ -1,16 +1,10 @@
 import { useOnclickOutside } from "@/hooks/useOnClickOutSide";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
-import { Dispatch, SetStateAction, useRef } from "react";
+import { useRef } from "react";
 import { DateRange, DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
-import { PlanDataTypes } from "./PlanCreateContent";
-
-type PlanCalendarProps = {
-  selectedDate: PlanDataTypes;
-  setSelectedDate: Dispatch<SetStateAction<PlanDataTypes>>;
-  setIsOpen: (isOpen: boolean) => void;
-};
+import { PlanCalendarProps } from "../../types/planType";
 
 const PlanCalendar = ({
   selectedDate,

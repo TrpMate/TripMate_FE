@@ -1,8 +1,4 @@
-type PlanDetailNumberProps = {
-  number: number;
-  isClicked: number;
-  setIsClicked: React.Dispatch<React.SetStateAction<number>>;
-};
+import { PlanDetailNumberProps } from "@/app/planList/types/planListType";
 
 const PlanDetailNumber = ({
   number,

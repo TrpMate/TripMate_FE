@@ -1,10 +1,5 @@
 import Link from "next/link";
-import React from "react";
-
-type TripTitleProps = {
-  title: string;
-  link: string;
-};
+import { TripTitleProps } from "../types/mainType";
 
 const TripTitle = ({ title, link }: TripTitleProps) => {
   return (

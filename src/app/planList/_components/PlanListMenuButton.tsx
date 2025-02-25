@@ -1,7 +1,4 @@
-type PlanListMenuButtonProps = {
-  isOpen: number;
-  setIsOpen: (id: number) => void;
-};
+import { PlanListMenuButtonProps } from "../types/planListType";
 
 const PlanListMenuButton = ({ isOpen, setIsOpen }: PlanListMenuButtonProps) => {
   const buttonList = [

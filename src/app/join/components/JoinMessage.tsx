@@ -1,7 +1,4 @@
-type JoinMessageProps = {
-  input?: string;
-  title: "사용가능" | "사용 불가능" | "비밀번호 불일치" | "";
-};
+import { JoinMessageProps } from "../types/joinType";
 
 const JoinMessage = ({ title, input }: JoinMessageProps) => {
   if (!title) return null;

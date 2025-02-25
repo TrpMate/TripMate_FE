@@ -1,15 +1,10 @@
+import { PlanDetailDayListProps } from "@/app/planList/types/planListType";
 import PlaceDownArrow from "@/utils/svg/PlaceDownArrow";
 import PlanDetailDelete from "@/utils/svg/PlanDetailDelete";
 import PlanDetailMove from "@/utils/svg/PlanDetailMove";
 import PlanDetailSetting from "@/utils/svg/PlanDetailSetting";
 import PlanDetailDateBar from "./PlanDetailDateBar";
 import PlanDetailNumber from "./PlanDetailNumber";
-
-type PlanDetailDayListProps = {
-  day: string;
-  isClicked: number;
-  setIsClicked: React.Dispatch<React.SetStateAction<number>>;
-};
 
 const PlanDetailDayList = ({
   day,

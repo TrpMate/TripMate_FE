@@ -1,6 +1,4 @@
-type BannerAuthProps = {
-  pathName: string;
-};
+import { BannerAuthProps } from "../types/type";
 
 const BannerAuth = ({ pathName }: BannerAuthProps) => {
   return (

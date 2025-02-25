@@ -1,8 +1,5 @@
 import Link from "next/link";
-
-type NotUserContentProps = {
-  setModalOpen: (value: boolean) => void;
-};
+import { NotUserContentProps } from "../types/loginType";
 
 const NotUserContent = ({ setModalOpen }: NotUserContentProps) => {
   return (

@@ -1,31 +1,7 @@
 import Position from "@/utils/svg/Position";
 import Image from "next/image";
 import Link from "next/link";
-
-type MenuItemProps = {
-  item: {
-    addr1: string;
-    addr2: string;
-    areacode: number;
-    booktour: number;
-    cat1: string;
-    cat2: string;
-    cat3: string;
-    contentid: number;
-    contenttypeid: number;
-    cpyrhtDivCd: string;
-    createdtime: number;
-    firstimage: string;
-    firstimage2: string;
-    mapx: number;
-    mapy: number;
-    mlevel: number;
-    modifiedtime: number;
-    sigungucode: number;
-    tel: string;
-    title: string;
-  };
-};
+import { MenuItemProps } from "../types/mainType";
 
 const MenuItem = ({ item }: MenuItemProps) => {
   return (

@@ -1,7 +1,4 @@
-type ModalInputProps = {
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
+import { ModalInputProps } from "../../types/loginType";
 
 const ModalInput = ({ value, onChange }: ModalInputProps) => {
   return (

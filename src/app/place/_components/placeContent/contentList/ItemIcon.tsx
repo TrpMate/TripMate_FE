@@ -1,8 +1,5 @@
+import { ItemIconProps } from "@/app/place/types/placeType";
 import ContentItemIcon from "@/utils/svg/ContentItemIcon";
-
-type ItemIconProps = {
-  number: number;
-};
 
 const ItemIcon = ({ number }: ItemIconProps) => {
   return (

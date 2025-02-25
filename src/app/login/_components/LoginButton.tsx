@@ -1,8 +1,6 @@
-type LoginButtonProps = {
-  onClick: () => void;
-};
+import { OnClickProps } from "../types/loginType";
 
-const LoginButton = ({ onClick }: LoginButtonProps) => {
+const LoginButton = ({ onClick }: OnClickProps) => {
   return (
     <div
       className="w-full h-[65px] mt-[25px] flex items-center justify-center rounded-[60px] bg-[#353535] cursor-pointer"

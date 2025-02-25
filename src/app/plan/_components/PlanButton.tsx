@@ -1,7 +1,4 @@
-type PlanButtonProps = {
-  bType?: "create";
-  title: string;
-};
+import { PlanButtonProps } from "../types/planType";
 
 const PlanButton = ({ bType, title }: PlanButtonProps) => {
   return (
