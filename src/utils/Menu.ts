@@ -60,3 +60,22 @@ export const itemList = [
     link: "/detail/6",
   },
 ];
+
+export const placeList = [
+  {
+    id: 1,
+    name: "관광지",
+  },
+  {
+    id: 2,
+    name: "식당",
+  },
+  {
+    id: 3,
+    name: "숙박",
+  },
+  {
+    id: 4,
+    name: "기타",
+  },
+];

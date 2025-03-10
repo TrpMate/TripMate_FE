@@ -1,5 +1,5 @@
 import { OnClickProps } from "@/app/login/types/loginType";
-import PlanDetailEdit from "@/utils/svg/PlanDetailEdit";
+import PlanDetailEdit from "@/utils/svg/planDetail/PlanDetailEdit";
 
 const PlanTopEditIcon = ({ onClick }: OnClickProps) => {
   return (

@@ -31,12 +31,22 @@ const PlanDetailContent = () => {
           </div>
         </div>
       </div>
-      <div
-        className="px-[39px] py-[16.5px] mt-[45px] border border-[#CCCCCC] rounded-[30px] cursor-pointer"
-        onClick={() => console.log("저장하기")}
-      >
-        <div className="flex items-center h-[25px]">
-          <p className="text-[20px] font-medium">저장하기</p>
+      <div className="flex items-center gap-[10px] font-medium">
+        <div
+          className="px-[39px] py-[16.5px] mt-[45px] border border-[#CCCCCC] rounded-[30px] cursor-pointer"
+          onClick={() => console.log("저장하기")}
+        >
+          <div className="flex items-center h-[25px]">
+            <p className="text-[20px]">인쇄하기</p>
+          </div>
+        </div>
+        <div
+          className="px-[39px] py-[16.5px] mt-[45px] border border-black bg-black rounded-[30px] cursor-pointer"
+          onClick={() => console.log("저장하기")}
+        >
+          <div className="flex items-center h-[25px]">
+            <p className="text-[20px] text-white">전체 저장하기</p>
+          </div>
         </div>
       </div>
     </div>

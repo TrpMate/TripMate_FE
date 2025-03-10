@@ -15,6 +15,9 @@ const LoginContent = () => {
   const params = useSearchParams();
   const [modalOpen, setModalOpen] = useState(false);
   const cookies = new Cookies();
+  const now = new Date();
+  const tokenDate = new Date();
+  tokenDate.setMinutes(now.getMinutes() + 60);
   const { mutate } = useEmailLogin();
   const [isErrorMsg, setIsErrorMsg] = useState("");
   const { mutate: socialMutate } = useSocialLogin();
@@ -36,8 +39,12 @@ const LoginContent = () => {
           { code, socialType: sessionStorage.getItem("socialType")! },
           {
             onSuccess: (data) => {
-              cookies.set("token", data!.headers["authorization"]);
-              cookies.set("refreshToken", data!.headers["refresh-token"]);
+              cookies.set("token", data!.headers["authorization"], {
+                expires: tokenDate,
+              });
+              cookies.set("refreshToken", data!.headers["refresh-token"], {
+                expires: tokenDate,
+              });
               navigate.push("/");
             },
           }
