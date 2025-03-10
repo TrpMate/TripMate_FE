@@ -8,7 +8,7 @@ import PlanListPagination from "./PlanListPagination";
 const PlanItemList = () => {
   const { data, isLoading, refetch } = useGetPlanList();
   const { mutate } = useDeletePlan();
-
+  console.log("data", data);
   return (
     <div className="w-full pt-[30px]">
       <PlanItemListTitle />
