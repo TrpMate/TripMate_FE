@@ -15,7 +15,7 @@ const PlanModalSelect = ({ data, onClick }: PlanModalSelectProps) => {
               <p className="leading-none">{data.address}</p>
             </div>
             <div className="flex h-[19px] items-center">
-              <p className="leading-none">{data.phone}</p>
+              <p className="leading-none">{data.phone ? data.phone : "-"}</p>
             </div>
           </div>
         )}
