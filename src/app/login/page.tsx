@@ -103,7 +103,7 @@ const LoginContent = () => {
         />
         <SocialLogin
           loginType="naver"
-          link="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${NAVER_CLIENT_ID}&state=${STATE}&redirect_uri=${REDIRECT_URI}"
+          link="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=btcFqS6_Y1EHqm8nT9gM&state=345ertfgdx&redirect_uri=http://localhost:3000/login"
           title="네이버 로그인"
           onClick={() => handleSocialType("naver")}
         />
