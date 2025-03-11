@@ -17,15 +17,23 @@ const PlanSearchModal = ({
   setListOpen,
   setData,
 }: PlanSearchModalProps) => {
-  const [keyword, setKeyword] = useState("");
+  const [text, setText] = useState("");
   const { data, isLoading, refetch } = useGetTourData({
-    keyword: keyword,
+    keyword: text,
     arrange: "A",
     numOfRows: 100,
     pageNo: 1,
     contentTypeId: listType,
   });
   console.log(data);
+
+  const handleSearchClick = () => {
+    setText(searchTitle);
+    setTimeout(() => {
+      refetch();
+    }, 0);
+  };
+
   useEffect(() => {
     refetch();
   }, []);
@@ -38,7 +46,7 @@ const PlanSearchModal = ({
           searchText={searchTitle}
           setSearchText={setSearchText}
           setListType={setListType}
-          onClick={refetch}
+          onClick={handleSearchClick}
         />
       </div>
       <div className="mt-10 flex-1 overflow-y-auto scrollbar-hide text-[#353535]">

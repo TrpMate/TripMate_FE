@@ -28,7 +28,9 @@ const MainItemList = () => {
   const handleSearchClick = () => {
     setTextOn(!textOn);
     setText(searchText);
-    refetch();
+    setTimeout(() => {
+      refetch();
+    }, 0);
   };
 
   return (

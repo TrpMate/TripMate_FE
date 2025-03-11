@@ -38,7 +38,9 @@ const PlacePageContent = () => {
   const handleSearchClick = () => {
     setTextOn(!textOn);
     setText(keyword);
-    refetch();
+    setTimeout(() => {
+      refetch();
+    }, 0);
   };
 
   return (
