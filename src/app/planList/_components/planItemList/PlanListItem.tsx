@@ -15,7 +15,7 @@ const PlanListItem = ({ item, onClick }: PlanListItemProps) => {
         href={{
           pathname: `/planList/${item.id}
         `,
-          query: { day: item.startDate },
+          query: { id: item.id },
         }}
         className="w-full flex items-center gap-[40px] border-[#EEEEEE]"
       >

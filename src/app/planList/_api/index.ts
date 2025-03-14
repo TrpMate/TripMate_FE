@@ -1,7 +1,7 @@
 import { createClientApi } from "@/shared/api/client-api";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Cookies } from "react-cookie";
-import { PlanItem } from "../_components/planItemList/PlanItemList";
+import { PlanItem } from "../types/planListType";
 
 export async function getPlanList() {
   const cookie = new Cookies();
@@ -34,6 +34,33 @@ export const deletePlan = async (id: number) => {
   }
 };
 
+export async function getPlanDetail(id: number) {
+  const cookie = new Cookies();
+  const api = createClientApi();
+  const response = await api.get(`/course/${id}`, {
+    headers: {
+      Authorization: cookie.get("token"),
+    },
+  });
+  if (response.status === 200) {
+    return response.data.data;
+  }
+}
+
+export async function getPlanDetailCourse(id: number) {
+  const cookie = new Cookies();
+  const api = createClientApi();
+  const response = await api.get(`/course-day/by-course-id/${id}`, {
+    headers: {
+      Authorization: cookie.get("token"),
+    },
+  });
+  if (response.status === 200) {
+    return response.data.data;
+  }
+}
+
+
 export const useGetPlanList = () => {
   const queryFn = () => getPlanList();
   return useQuery<PlanItem[]>({ queryKey: ["planList"], queryFn });
@@ -42,4 +69,14 @@ export const useGetPlanList = () => {
 export const useDeletePlan = () => {
   const mutationFn = (id: number) => deletePlan(id);
   return useMutation({ mutationFn });
+};
+
+export const useGetPlanDetail = (id: number) => {
+  const queryFn = () => getPlanDetail(id);
+  return useQuery({ queryKey: ["planDetail", id], queryFn });
+};
+
+export const useGetPlanDetailCourse = (id: number) => {
+  const queryFn = () => getPlanDetailCourse(id);
+  return useQuery({ queryKey: ["detailCourse", id], queryFn });
 };

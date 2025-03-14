@@ -97,7 +97,7 @@ const LoginContent = () => {
         />
         <SocialLogin
           loginType="google"
-          link="https://accounts.google.com/o/oauth2/auth?client_id=935790641586-mka3tc08fttdofiodu8v295569ntugnj.apps.googleusercontent.com&redirect_uri=http://localhost:3000/login&response_type=code&scope=openid email profile"
+          link="https://accounts.google.com/o/oauth2/auth?client_id=434927012651-m8td10sk6jvtj1jolglqhtaggbpd4tp7.apps.googleusercontent.com&redirect_uri=http://localhost:3000/login&response_type=code&scope=openid email profile"
           title="구글 로그인"
           onClick={() => handleSocialType("google")}
         />
