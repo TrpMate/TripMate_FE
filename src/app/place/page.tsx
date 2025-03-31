@@ -10,8 +10,8 @@ import ContentList from "./_components/placeContent/contentList/ContentList";
 import DropList from "./_components/placeContent/dropList/DropList";
 
 const PlacePageContent = () => {
-  const params = useSearchParams();
-  const [text, setText] = useState(params.get("kd")?.toString() ?? "");
+  const params = useSearchParams() || new URLSearchParams();
+  const [text, setText] = useState(params.get("kd") ?? "");
   const [textOn, setTextOn] = useState(false);
   const [listType, setListType] = useState(Number(params.get("ct")) || 12);
   const [keyword, setKeyword] = useState("");
@@ -60,7 +60,7 @@ const PlacePageContent = () => {
             setNumOfRowName={setNumOfRowName}
           />
           <div className="flex flex-wrap items-center justify-start gap-[40px] pb-[150px] pt-[40px]">
-            {isLoading ? (
+            {isLoading || !data ? (
               <Skeleton length={8} skeletonType="place" />
             ) : (
               <ContentList tourList={data} />
