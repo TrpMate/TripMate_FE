@@ -43,6 +43,8 @@ const PlacePageContent = () => {
     }, 0);
   };
 
+  console.log(data);
+
   return (
     <div className="pt-[100px]">
       <PlaceBanner

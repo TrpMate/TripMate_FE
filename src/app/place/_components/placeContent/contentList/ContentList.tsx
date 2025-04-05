@@ -10,7 +10,7 @@ const ContentList = ({ tourList }: ContentListProps) => {
           key={item.contentid}
           src={item.firstimage ? item.firstimage : "/images/no_image.png"}
           title={item.title}
-          content="dddd"
+          content={item.addr1}
         />
       ))}
     </>

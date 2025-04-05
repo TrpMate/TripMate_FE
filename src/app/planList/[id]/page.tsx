@@ -2,11 +2,11 @@
 
 import { useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
+import { useGetPlanDetail, useGetPlanDetailCourse } from "../_api";
 import PlanDetailTop from "./_components/detailTop/PlanDetailTop";
 import PlanDetailDayList from "./_components/planDay/PlanDetailDayList";
 import PlanDetailChat from "./_components/PlanDetailChat";
 import PlanDetailMap from "./_components/PlanDetailMap";
-import { useGetPlanDetail, useGetPlanDetailCourse } from "../_api";
 
 const PlanDetailContent = () => {
   const params = useSearchParams();
@@ -14,7 +14,7 @@ const PlanDetailContent = () => {
   const { data, isLoading } = useGetPlanDetail(Number(id));
   const { data: courseData } = useGetPlanDetailCourse(Number(id));
   const [isClicked, setIsClicked] = useState(0);
-  console.log('데이터', courseData);
+  console.log("데이터", courseData);
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -22,12 +22,16 @@ const PlanDetailContent = () => {
     <div className="pt-[100px] pb-[45px] flex flex-col items-center justify-center">
       <div className=" flex items-center justify-center">
         <div className="pt-[100px] w-[1440px]">
-          <PlanDetailTop title={data.courseName} startDate={data.startDate} endDate={data.endDate} />
+          <PlanDetailTop
+            title={data.courseName}
+            startDate={data.startDate}
+            endDate={data.endDate}
+          />
           <div className="pt-[40px] w-full flex items-start justify-between">
             <div className="w-[1000px]">
               <PlanDetailMap />
               <PlanDetailDayList
-                day={data!}
+                day={courseData}
                 isClicked={isClicked}
                 setIsClicked={setIsClicked}
               />

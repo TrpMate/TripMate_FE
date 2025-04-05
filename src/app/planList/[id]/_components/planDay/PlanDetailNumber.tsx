@@ -5,6 +5,7 @@ const PlanDetailNumber = ({
   isClicked,
   setIsClicked,
 }: PlanDetailNumberProps) => {
+  console.log("number", number);
   return (
     <div>
       <div

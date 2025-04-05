@@ -6,11 +6,12 @@ import { PlanItem } from "../types/planListType";
 export async function getPlanList() {
   const cookie = new Cookies();
   const api = createClientApi();
-  const response = await api.get("/course", {
+  const response = await api.get("/course/my-courses", {
     headers: {
       Authorization: cookie.get("token"),
     },
   });
+  console.log("데이터", response);
   if (response.status === 200) {
     return response.data.data;
   }
@@ -59,7 +60,6 @@ export async function getPlanDetailCourse(id: number) {
     return response.data.data;
   }
 }
-
 
 export const useGetPlanList = () => {
   const queryFn = () => getPlanList();

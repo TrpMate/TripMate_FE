@@ -14,11 +14,11 @@ const PlanDetailDayList = ({
   setIsClicked,
 }: PlanDetailDayListProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(isOpen);
+  console.log("day", day);
   return (
     <>
       <div className="w-full mt-[40px] flex items-end">
-        {Array.from({ length: Number(day) }).map((_, index) => (
+        {Array.from({ length: day.length }).map((_, index) => (
           <div key={index}>
             <PlanDetailNumber
               isClicked={isClicked}
