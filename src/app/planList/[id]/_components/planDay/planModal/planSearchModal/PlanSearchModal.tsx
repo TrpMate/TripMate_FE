@@ -65,6 +65,8 @@ const PlanSearchModal = ({
               <SearchModalButton
                 onClick={() => {
                   setData({
+                    contentid: item.contentid.toString(),
+                    contenttypeid: item.contenttypeid.toString(),
                     name: item.title,
                     address: item.addr1,
                     phone: item.tel,

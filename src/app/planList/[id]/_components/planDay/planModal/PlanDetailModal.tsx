@@ -8,20 +8,27 @@ import PlanModalSelect from "./PlanModalSelect";
 import PlanModalTime from "./PlanModalTime";
 import PlanModalTitle from "./PlanModalTitle";
 import PlanSearchModal from "./planSearchModal/PlanSearchModal";
+import { useAddPlanDay } from "../../../_api";
 
-const PlanDetailModal = ({ setIsOpen }: PlanDetailModalProps) => {
+const PlanDetailModal = ({ dayId, setIsOpen }: PlanDetailModalProps) => {
   const [listOpen, setListOpen] = useState(false);
   const [listType, setListType] = useState(12);
   const [searchTitle, setSearchTitle] = useState("");
   const [data, setData] = useState({
+    contentid: "",
+    contenttypeid: "",
     name: "",
     address: "",
     phone: "",
   });
+  const { mutate } = useAddPlanDay();
+
   const modalRef = useRef(null);
   useOnclickOutside(modalRef, () => {
     setIsOpen(false);
   });
+
+
   return (
     <div className="w-full h-screen fixed top-0 left-0 flex items-center justify-center  bg-[#15232F] bg-opacity-80 z-[999]">
       <div
@@ -35,8 +42,27 @@ const PlanDetailModal = ({ setIsOpen }: PlanDetailModalProps) => {
         <PlanMemo />
         <PlanModalButton
           onClick={() => {
-            console.log("저장하기");
-            setIsOpen(false);
+            console.log("저장하기",);
+            mutate({
+              data: {
+                id: dayId,
+                data: data,
+              }
+
+            }, {
+
+              onSuccess: () => {
+                setIsOpen(false);
+                setData({
+                  contentid: "",
+                  contenttypeid: "",
+                  name: "",
+                  address: "",
+                  phone: "",
+                });
+                setListOpen(false);
+              }
+            })
           }}
         />
         {listOpen && (

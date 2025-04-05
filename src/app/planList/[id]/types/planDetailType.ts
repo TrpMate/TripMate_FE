@@ -1,4 +1,5 @@
 export type PlanDetailModalProps = {
+  dayId: number;
   setIsOpen: (isOpen: boolean) => void;
 };
 
@@ -27,7 +28,13 @@ export type PlanSearchModalProps = {
   listType: number;
   setListType: (type: number) => void;
   setListOpen: (isOpen: boolean) => void;
-  setData: (data: { name: string; address: string; phone: string }) => void;
+  setData: (data: {
+    contentid: string,
+    contenttypeid: string,
+    name: string,
+    address: string,
+    phone: string
+  }) => void;
 };
 
 export type SearchModalImageProps = {

@@ -1,8 +1,10 @@
 import PlanListDelete from "@/utils/svg/PlanListDelete";
 import Link from "next/link";
 import { PlanListItemProps } from "../../types/planListType";
+import { useCourse } from "@/store/planStore";
 
 const PlanListItem = ({ item, onClick }: PlanListItemProps) => {
+  const { setCourseId } = useCourse();
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toISOString().slice(0, 16).replace("T", " ").replace(/-/g, ".");
@@ -14,11 +16,10 @@ const PlanListItem = ({ item, onClick }: PlanListItemProps) => {
       <Link
         href={{
           pathname: `/planList/${item.id}
-        `,
-          query: { id: item.id },
+        `
         }}
         className="w-full flex items-center gap-[40px] border-[#EEEEEE]"
-      >
+        onClick={() => setCourseId(item.id)}>
         <div className="flex items-center justify-end w-[27.05px]">
           <p className="font-medium text-[#353535] leading-none">{item.id}</p>
         </div>

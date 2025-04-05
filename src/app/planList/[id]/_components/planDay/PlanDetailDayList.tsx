@@ -18,7 +18,7 @@ const PlanDetailDayList = ({
   return (
     <>
       <div className="w-full mt-[40px] flex items-end">
-        {Array.from({ length: day.length }).map((_, index) => (
+        {day?.map((_, index) => (
           <div key={index}>
             <PlanDetailNumber
               isClicked={isClicked}
@@ -27,18 +27,28 @@ const PlanDetailDayList = ({
             />
           </div>
         ))}
-        <PlanDetailDateBar date={"2025-01-01(목)"} />
+        {day?.map((day, index) => (
+          isClicked === index && <PlanDetailDateBar key={index} date={`${day.dayDate}(목)`} />
+        ))}
+
       </div>
-      <PlanDetailDayItem />
-      <div className="w-full flex items-center justify-center -mt-[0px] h-[110px] border border-[#DDDDDD] rounded-b-[10px] bg-[#F2F2F2]">
-        <div
-          className="size-[48px] flex items-center justify-center rounded-full bg-[#353535] cursor-pointer"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <PlanDetailPlus />
+
+      {day?.map((day, index) => (
+        isClicked === index &&
+        <div key={index}>
+          <PlanDetailDayItem />
+          <div className="w-full flex items-center justify-center -mt-[0px] h-[110px] border border-[#DDDDDD] rounded-b-[10px] bg-[#F2F2F2]">
+            <div
+              className="size-[48px] flex items-center justify-center rounded-full bg-[#353535] cursor-pointer"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <PlanDetailPlus />
+            </div>
+            {isOpen && <PlanDetailModal dayId={day.id} setIsOpen={setIsOpen} />}
+          </div>
         </div>
-      </div>
-      {isOpen && <PlanDetailModal setIsOpen={setIsOpen} />}
+      ))}
+
     </>
   );
 };
