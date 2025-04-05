@@ -1,8 +1,10 @@
 "use client";
 
+import "react-loading-skeleton/dist/skeleton.css";
 import { useDeletePlan, useGetPlanList } from "../../_api";
 import PlanItemListTitle from "./PlanItemListTitle";
 import PlanListItem from "./PlanListItem";
+import PlanListLoading from "./PlanListLoading";
 import PlanListPagination from "./PlanListPagination";
 
 const PlanItemList = () => {
@@ -12,11 +14,11 @@ const PlanItemList = () => {
   return (
     <div className="w-full pt-[30px]">
       <PlanItemListTitle />
-      {isLoading ? (
-        <div>Loading..</div>
-      ) : (
-        <div className="flex flex-col-reverse">
-          {data?.map((item) => (
+      <div className="flex flex-col-reverse">
+        {isLoading ? (
+          <PlanListLoading />
+        ) : (
+          data?.map((item) => (
             <PlanListItem
               key={item.id}
               item={item}
@@ -29,9 +31,10 @@ const PlanItemList = () => {
                 })
               }
             />
-          ))}
-        </div>
-      )}
+          ))
+        )}
+      </div>
+
       <PlanListPagination />
     </div>
   );
