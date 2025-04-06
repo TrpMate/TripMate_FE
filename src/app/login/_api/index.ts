@@ -31,8 +31,9 @@ export const userEmailLogin = async (data: emailLoginData) => {
       return response.headers;
     }
     return null;
-  } catch (error: any) {
-    throw new Error(error.response.status);
+  } catch (error) {
+    console.log("error", error);
+    throw new Error("실패했습니다.");
   }
 };
 

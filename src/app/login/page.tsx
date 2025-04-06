@@ -79,7 +79,7 @@ const LoginContent = () => {
                 cookies.set("refreshToken", data!["refresh-token"]);
                 navigate.push("/");
               },
-              onError: (error: any) => {
+              onError: (error) => {
                 if (error.message === "404") {
                   setIsErrorMsg("존재하지 않는 이메일입니다.");
                   return;
