@@ -1,4 +1,5 @@
 "use client";
+import Loading from "@/components/Loading";
 import H27Title from "@/components/subTitle/H27Title";
 import TopBanner from "@/components/topBanner/TopBanner";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -14,10 +15,11 @@ import SocialLogin from "./_components/SocialLogin";
 const LoginContent = () => {
   const params = useSearchParams();
   const [modalOpen, setModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const cookies = new Cookies();
   const now = new Date();
   const tokenDate = new Date();
-  tokenDate.setMinutes(now.getMinutes() + 60);
+  tokenDate.setMinutes(now.getMinutes() + 1440);
   const { mutate } = useEmailLogin();
   const [isErrorMsg, setIsErrorMsg] = useState("");
   const { mutate: socialMutate } = useSocialLogin();
@@ -35,6 +37,7 @@ const LoginContent = () => {
     if (code) {
       console.log(sessionStorage.getItem("socialType"));
       if (sessionStorage.getItem("socialType")) {
+        setIsLoading(true);
         socialMutate(
           { code, socialType: sessionStorage.getItem("socialType")! },
           {
@@ -46,6 +49,7 @@ const LoginContent = () => {
                 expires: tokenDate,
               });
               navigate.push("/");
+              setIsLoading(false);
             },
           }
         );
@@ -55,6 +59,7 @@ const LoginContent = () => {
 
   return (
     <div className="w-full flex flex-col justify-center items-center">
+      {isLoading && <Loading />}
       {modalOpen && <LoginModal setModalOpen={setModalOpen} />}
       <TopBanner />
       <div className="pt-[200px] flex flex-col w-[562px]">
@@ -115,7 +120,7 @@ const LoginContent = () => {
 
 const Login = () => {
   return (
-    <Suspense fallback={<div>로딩중..</div>}>
+    <Suspense fallback={<Loading />}>
       <LoginContent />
     </Suspense>
   );

@@ -6,16 +6,18 @@ const PlanModalSelect = ({ data, onClick }: PlanModalSelectProps) => {
     <div className="mt-10">
       <H22Title title="장소 설정" />
       <div className="mt-5 flex items-center justify-between">
-        {data.name && (
+        {data.placeName && (
           <div className="font-medium w-[328px] flex flex-col gap-[5px]">
             <div className="flex h-[19px] items-center">
-              <p className="leading-none font-bold">{data.name}</p>
+              <p className="leading-none font-bold">{data.placeName}</p>
             </div>
             <div className="flex h-[19px] items-center">
               <p className="leading-none">{data.address}</p>
             </div>
             <div className="flex h-[19px] items-center">
-              <p className="leading-none">{data.phone ? data.phone : "-"}</p>
+              <p className="leading-none">
+                {data.phoneNumber ? data.phoneNumber : "-"}
+              </p>
             </div>
           </div>
         )}

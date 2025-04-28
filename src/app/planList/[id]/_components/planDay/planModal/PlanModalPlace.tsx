@@ -2,7 +2,33 @@ import H22Title from "@/components/subTitle/H22Title";
 import { placeList } from "@/utils/Menu";
 import { useState } from "react";
 
-const PlanModalPlace = () => {
+type PlanModalPlaceProps = {
+  courseData: {
+    courseDayId: number;
+    placeName: string;
+    contentTypeId: string;
+    visitStartTime: string;
+    visitEndTime: string;
+    mapX: number;
+    mapY: number;
+    address: string;
+    phoneNumber: string;
+  };
+  setCourseData: (data: {
+    courseDayId: number;
+    placeName: string;
+    category: string;
+    contentTypeId: string;
+    visitStartTime: string;
+    visitEndTime: string;
+    mapX: number;
+    mapY: number;
+    address: string;
+    phoneNumber: string;
+  }) => void;
+};
+
+const PlanModalPlace = ({ courseData, setCourseData }: PlanModalPlaceProps) => {
   const [selectedItem, setSelectedItem] = useState("");
 
   return (
@@ -17,7 +43,13 @@ const PlanModalPlace = () => {
                 ? "border-[#AED400] bg-[#FBFFE6]"
                 : "border-[#CCCCCC] bg-white"
             } rounded-[30px] cursor-pointer`}
-            onClick={() => setSelectedItem(place.name)}
+            onClick={() => {
+              setSelectedItem(place.name);
+              setCourseData({
+                ...courseData,
+                category: place.name,
+              });
+            }}
           >
             <div className="flex items-center h-5 ">
               <p

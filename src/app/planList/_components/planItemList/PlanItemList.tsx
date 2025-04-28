@@ -34,7 +34,6 @@ const PlanItemList = () => {
           ))
         )}
       </div>
-
       <PlanListPagination />
     </div>
   );

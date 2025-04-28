@@ -15,7 +15,8 @@ const PlanSearchModal = ({
   listType,
   setListType,
   setListOpen,
-  setData,
+  courseData,
+  setCourseData,
 }: PlanSearchModalProps) => {
   const [text, setText] = useState("");
   const { data, isLoading, refetch } = useGetTourData({
@@ -64,12 +65,16 @@ const PlanSearchModal = ({
               </div>
               <SearchModalButton
                 onClick={() => {
-                  setData({
-                    contentid: item.contentid.toString(),
-                    contenttypeid: item.contenttypeid.toString(),
-                    name: item.title,
-                    address: item.addr1,
-                    phone: item.tel,
+                  setCourseData({
+                    ...courseData,
+                    placeName: item.title,
+                    address: `${item.addr1} ${item.addr2}`,
+                    phoneNumber: item.tel,
+                    contentTypeId: item.contenttypeid.toString(),
+                    mapX: item.mapx,
+                    mapY: item.mapy,
+                    visitEndTime: "",
+                    visitStartTime: "",
                   });
                   setListOpen(false);
                 }}

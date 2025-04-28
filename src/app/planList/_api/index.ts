@@ -61,6 +61,28 @@ export async function getPlanDetailCourse(id: number) {
   }
 }
 
+export async function useAddCourse(data: any) {
+  const cookie = new Cookies();
+  const api = createClientApi();
+  try {
+    const response = await api.post(
+      `/course-places`,
+      { data },
+      {
+        headers: {
+          Authorization: cookie.get("token"),
+        },
+      }
+    );
+    if (response.status === 200) {
+      return response.data.data;
+    }
+  } catch (error) {
+    console.log(error);
+    throw new Error("추가에 실패했습니다.");
+  }
+}
+
 export const useGetPlanList = () => {
   const queryFn = () => getPlanList();
   return useQuery<PlanItem[]>({ queryKey: ["planList"], queryFn });
@@ -79,4 +101,11 @@ export const useGetPlanDetail = (id: number) => {
 export const useGetPlanDetailCourse = (id: number) => {
   const queryFn = () => getPlanDetailCourse(id);
   return useQuery({ queryKey: ["detailCourse", id], queryFn });
+};
+
+export const useAddCourseMutation = () => {
+  const mutationFn = (data: any) => useAddCourse(data);
+  return useMutation({
+    mutationFn,
+  });
 };

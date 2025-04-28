@@ -29,18 +29,10 @@ export type PlanDetailDateBarProps = {
 
 export type PlanDetailDayListProps = {
   day: {
-    courseId
-    :
-    number
-    dayDate
-    :
-    string
-    dayNum
-    :
-    number
-    id
-    :
-    number
+    courseId: number;
+    dayDate: string;
+    dayNum: number;
+    id: number;
   }[];
   isClicked: number;
   setIsClicked: React.Dispatch<React.SetStateAction<number>>;

@@ -16,6 +16,7 @@ export default {
       },
       animation: {
         shimmer: "shimmer 1.5s infinite",
+        spinSlow: "spin 8s linear infinite",
       },
       backgroundImage: {
         "skeleton-shimmer":

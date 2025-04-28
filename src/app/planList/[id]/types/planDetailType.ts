@@ -1,6 +1,19 @@
 export type PlanDetailModalProps = {
   dayId: number;
   setIsOpen: (isOpen: boolean) => void;
+  onSave: (newData: {
+    courseDayId: number;
+    placeName: string;
+    category: string;
+    contentTypeId: string;
+    visitStartTime: string;
+    visitEndTime: string;
+    mapX: number;
+    mapY: number;
+    address?: string;
+    phoneNumber?: string;
+    memo?: string;
+  }) => void;
 };
 
 export type PlanModalTitleProps = {
@@ -10,9 +23,17 @@ export type PlanModalTitleProps = {
 
 export type PlanModalSelectProps = {
   data: {
-    name: string;
-    address: string;
-    phone: string;
+    courseDayId: number;
+    placeName: string;
+    category: string;
+    contentTypeId: string;
+    visitStartTime: string;
+    visitEndTime: string;
+    mapX: number;
+    mapY: number;
+    address?: string;
+    phoneNumber?: string;
+    memo?: string;
   };
   onClick: () => void;
 };
@@ -28,12 +49,29 @@ export type PlanSearchModalProps = {
   listType: number;
   setListType: (type: number) => void;
   setListOpen: (isOpen: boolean) => void;
-  setData: (data: {
-    contentid: string,
-    contenttypeid: string,
-    name: string,
-    address: string,
-    phone: string
+  courseData: {
+    courseDayId: number;
+    placeName: string;
+    category: string;
+    contentTypeId: string;
+    visitStartTime: string;
+    visitEndTime: string;
+    mapX: number;
+    mapY: number;
+    address: string;
+    phoneNumber: string;
+  };
+  setCourseData: (data: {
+    courseDayId: number;
+    placeName: string;
+    category: string;
+    contentTypeId: string;
+    visitStartTime: string;
+    visitEndTime: string;
+    mapX: number;
+    mapY: number;
+    address: string;
+    phoneNumber: string;
   }) => void;
 };
 

@@ -30,10 +30,22 @@ a svg:hover #nevIon {
   from {
     transform: scale(0.5);
   }
-
   to {
     transform: scale(1);
   }
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(86px);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) translateX(86px);
+  }
+}
+
+.animate-rotate {
+  animation: rotate 2s linear infinite;
 }
 
 @media (prefers-color-scheme: dark) {
